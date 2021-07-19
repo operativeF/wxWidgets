@@ -39,6 +39,8 @@
 
 #include "wx/msw/dib.h"
 
+#include <boost/nowide/convert.hpp>
+
 // ----------------------------------------------------------------------------
 // private functions
 // ----------------------------------------------------------------------------
@@ -219,12 +221,12 @@ bool wxDIB::CopyFromDDB(HBITMAP hbmp)
 // Loading/saving the DIBs
 // ----------------------------------------------------------------------------
 
-bool wxDIB::Load(const wxString& filename)
+bool wxDIB::Load(std::string_view filename)
 {
-    m_handle = (HBITMAP)::LoadImage
+    m_handle = (HBITMAP)::LoadImageW
                          (
                             wxGetInstance(),
-                            filename.t_str(),
+                            boost::nowide::widen(filename).c_str(),
                             IMAGE_BITMAP,
                             0, 0, // don't specify the size
                             LR_CREATEDIBSECTION | LR_LOADFROMFILE
@@ -240,12 +242,13 @@ bool wxDIB::Load(const wxString& filename)
     return true;
 }
 
-bool wxDIB::Save(const wxString& filename)
+bool wxDIB::Save(std::string_view filename)
 {
     wxCHECK_MSG( m_handle, false, wxT("wxDIB::Save(): invalid object") );
 
 #if wxUSE_FILE
-    wxFile file(filename, wxFile::write);
+    // FIXME: Convert filename string at the boundary in wxFile.
+    wxFile file(boost::nowide::widen(filename).c_str(), wxFile::write);
     bool ok = file.IsOpened();
     if ( ok )
     {
@@ -302,7 +305,7 @@ bool wxDIB::Save(const wxString& filename)
     if ( !ok )
     {
         wxLogError(_("Failed to save the bitmap image to file \"%s\"."),
-                   filename.c_str());
+                   std::string(filename));
     }
 
     return ok;

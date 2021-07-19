@@ -133,7 +133,7 @@ bool wxIcon::LoadFile(const wxString& filename,
         return true;
     }
 
-    return handler->Load(this, filename, type, desiredWidth, desiredHeight);
+    return handler->Load(this, std::string_view(filename.c_str()), type, desiredWidth, desiredHeight);
 }
 
 bool wxIcon::CreateFromHICON(WXHICON icon)

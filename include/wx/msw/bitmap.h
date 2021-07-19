@@ -280,7 +280,7 @@ class WXDLLIMPEXP_CORE wxBitmapHandler : public wxGDIImageHandler
 {
 public:
     wxBitmapHandler() = default;
-    wxBitmapHandler(const wxString& name, const wxString& ext, wxBitmapType type)
+    wxBitmapHandler(const std::string& name, const std::string& ext, wxBitmapType type)
         : wxGDIImageHandler(name, ext, type) { }
 
     ~wxBitmapHandler() override = default;
@@ -292,11 +292,11 @@ public:
                         wxBitmapType type,
                         int width, int height, int depth = 1) override;
     bool Load(wxGDIImage *image,
-                      const wxString& name,
+                      std::string_view name,
                       wxBitmapType type,
                       int desiredWidth, int desiredHeight) override;
     bool Save(const wxGDIImage *image,
-                      const wxString& name,
+                      std::string_view name,
                       wxBitmapType type) const override;
 
 
@@ -308,11 +308,11 @@ public:
                         wxBitmapType type,
                         int width, int height, int depth = 1);
     virtual bool LoadFile(wxBitmap *bitmap,
-                          const wxString& name,
+                          std::string_view name,
                           wxBitmapType type,
                           int desiredWidth, int desiredHeight);
     virtual bool SaveFile(const wxBitmap *bitmap,
-                          const wxString& name,
+                          std::string_view name,
                           wxBitmapType type,
                           const wxPalette *palette = nullptr) const;
 };

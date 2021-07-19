@@ -13,6 +13,7 @@
 
 #include "wx/textctrl.h"
 #include "wx/dynarray.h"
+
 #include <vector>
 
 struct wxMSWListItemData;

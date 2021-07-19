@@ -1045,7 +1045,7 @@ bool wxBitmap::LoadFile(const wxString& filename, wxBitmapType type)
     {
         m_refData = new wxBitmapRefData;
 
-        if ( !handler->LoadFile(this, filename, type, -1, -1) )
+        if ( !handler->LoadFile(this, std::string_view(filename.c_str()), type, -1, -1) )
             return false;
 
 #if wxUSE_WXDIB
@@ -1101,7 +1101,7 @@ bool wxBitmap::SaveFile(const wxString& filename,
 
     if ( handler )
     {
-        return handler->SaveFile(this, filename, type, palette);
+        return handler->SaveFile(this, std::string_view(filename.c_str()), type, palette);
     }
 #if wxUSE_IMAGE && wxUSE_WXDIB
     else // no bitmap handler found
@@ -1701,7 +1701,7 @@ bool wxBitmapHandler::Create(wxGDIImage *image,
 }
 
 bool wxBitmapHandler::Load(wxGDIImage *image,
-                           const wxString& name,
+                           std::string_view name,
                            wxBitmapType type,
                            int width, int height)
 {
@@ -1711,7 +1711,7 @@ bool wxBitmapHandler::Load(wxGDIImage *image,
 }
 
 bool wxBitmapHandler::Save(const wxGDIImage *image,
-                           const wxString& name,
+                           std::string_view name,
                            wxBitmapType type) const
 {
     wxBitmap *bitmap = wxDynamicCast(image, wxBitmap);
@@ -1730,7 +1730,7 @@ bool wxBitmapHandler::Create(wxBitmap *WXUNUSED(bitmap),
 }
 
 bool wxBitmapHandler::LoadFile(wxBitmap *WXUNUSED(bitmap),
-                               const wxString& WXUNUSED(name),
+                               std::string_view WXUNUSED(name),
                                wxBitmapType WXUNUSED(type),
                                int WXUNUSED(desiredWidth),
                                int WXUNUSED(desiredHeight))
@@ -1739,7 +1739,7 @@ bool wxBitmapHandler::LoadFile(wxBitmap *WXUNUSED(bitmap),
 }
 
 bool wxBitmapHandler::SaveFile(const wxBitmap *WXUNUSED(bitmap),
-                               const wxString& WXUNUSED(name),
+                               std::string_view WXUNUSED(name),
                                wxBitmapType WXUNUSED(type),
                                const wxPalette *WXUNUSED(palette)) const
 {

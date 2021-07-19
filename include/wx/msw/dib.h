@@ -58,7 +58,7 @@ public:
     // load a DIB from file (any depth is supoprted here unlike above)
     //
     // as above, use IsOk() to see if the bitmap was loaded successfully
-    wxDIB(const wxString& filename)
+    wxDIB(std::string_view filename)
     { 
         Load(filename);
     }
@@ -75,7 +75,7 @@ public:
     [[maybe_unused]] bool Create(const wxBitmap& bmp, int depth = -1) { return Create(GetHbitmapOf(bmp), depth); }
 #endif
     [[maybe_unused]] bool Create(HBITMAP hbmp, int depth = -1);
-    bool Load(const wxString& filename);
+    bool Load(std::string_view filename);
 
     ~wxDIB();
 
@@ -97,7 +97,7 @@ public:
 #endif // defined(__WXMSW__) && wxUSE_PALETTE
 
     // save the DIB as a .BMP file to the file with the given name
-    bool Save(const wxString& filename);
+    bool Save(std::string_view filename);
 
     // return true if DIB was successfully created, false otherwise
     bool IsOk() const { return m_handle != nullptr; }
