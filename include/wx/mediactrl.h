@@ -79,7 +79,7 @@ public:
                 long style = 0,
                 const wxString& szBackend = wxEmptyString,
                 const wxValidator& validator = wxDefaultValidator,
-                const wxString& name = wxT("mediaCtrl"))
+                std::string_view name = "mediaCtrl")
                 : m_imp(nullptr), m_bLoaded(false)
     {   Create(parent, winid, fileName, pos, size, style,
                szBackend, validator, name);                             }
@@ -91,7 +91,7 @@ public:
                 long style = 0,
                 const wxString& szBackend = wxEmptyString,
                 const wxValidator& validator = wxDefaultValidator,
-                const wxString& name = wxT("mediaCtrl"))
+                std::string_view name = "mediaCtrl")
                 : m_imp(nullptr), m_bLoaded(false)
     {   Create(parent, winid, location, pos, size, style,
                szBackend, validator, name);                             }
@@ -105,7 +105,7 @@ public:
                 long style = 0,
                 const wxString& szBackend = wxEmptyString,
                 const wxValidator& validator = wxDefaultValidator,
-                const wxString& name = wxT("mediaCtrl"));
+                std::string_view name = "mediaCtrl");
 
     [[maybe_unused]] bool Create(wxWindow* parent, wxWindowID winid,
                 const wxURI& location,
@@ -114,7 +114,7 @@ public:
                 long style = 0,
                 const wxString& szBackend = wxEmptyString,
                 const wxValidator& validator = wxDefaultValidator,
-                const wxString& name = wxT("mediaCtrl"));
+                std::string_view name = "mediaCtrl");
 
     bool DoCreate(const wxClassInfo* instance,
                 wxWindow* parent, wxWindowID winid,
@@ -122,7 +122,7 @@ public:
                 const wxSize& size = wxDefaultSize,
                 long style = 0,
                 const wxValidator& validator = wxDefaultValidator,
-                const wxString& name = wxT("mediaCtrl"));
+                std::string_view name = "mediaCtrl");
 
     bool Play();
     bool Pause();
@@ -194,7 +194,7 @@ public:
                                const wxSize& WXUNUSED(size),
                                long WXUNUSED(style),
                                const wxValidator& WXUNUSED(validator),
-                               const wxString& WXUNUSED(name))
+                               std::string_view WXUNUSED(name))
     {   return false;                   }
 
     virtual bool Play()

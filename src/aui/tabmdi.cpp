@@ -61,7 +61,7 @@ wxAuiMDIParentFrame::wxAuiMDIParentFrame(wxWindow *parent,
                                          const wxPoint& pos,
                                          const wxSize& size,
                                          long style,
-                                         const wxString& name)
+                                         std::string_view name)
 {
     Init();
     (void)Create(parent, id, title, pos, size, style, name);
@@ -87,7 +87,7 @@ bool wxAuiMDIParentFrame::Create(wxWindow *parent,
                                  const wxPoint& pos,
                                  const wxSize& size,
                                  long style,
-                                 const wxString& name)
+                                 std::string_view name)
 {
 #if wxUSE_MENUS
     // this style can be used to prevent a window from having the standard MDI
@@ -446,7 +446,7 @@ wxAuiMDIChildFrame::wxAuiMDIChildFrame(wxAuiMDIParentFrame *parent,
                                        const wxPoint& WXUNUSED(pos),
                                        const wxSize& size,
                                        long style,
-                                       const wxString& name)
+                                       std::string_view name)
 {
     Init();
 
@@ -493,7 +493,7 @@ bool wxAuiMDIChildFrame::Create(wxAuiMDIParentFrame* parent,
                                 const wxPoint& WXUNUSED(pos),
                                 const wxSize& size,
                                 long style,
-                                const wxString& name)
+                                std::string_view name)
 {
     wxAuiMDIClientWindow* pClientWindow = parent->GetClientWindow();
     wxASSERT_MSG((pClientWindow != nullptr), wxT("Missing MDI client window."));

@@ -83,7 +83,7 @@ public:
                 const wxPoint& pos = wxDefaultPosition,
                 const wxSize& size = wxDefaultSize,
                 long style = wxDEFAULT_FRAME_STYLE,
-                const wxString &name = wxT("frame"))
+                std::string_view name = "frame")
                     : wxFrame(parent, id, title, pos, size, style | wxFRAME_SHAPED, name)
     {
         SetBackgroundStyle(wxBG_STYLE_PAINT);

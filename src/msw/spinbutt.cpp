@@ -49,12 +49,12 @@ bool wxSpinButton::Create(wxWindow *parent,
                           const wxPoint& pos,
                           const wxSize& size,
                           long style,
-                          const wxString& name)
+                          std::string_view name)
 {
     // basic initialization
     m_windowId = (id == wxID_ANY) ? NewControlId() : id;
 
-    SetName(name);
+    SetName(std::string(name));
 
     wxPoint pt = pos;
     wxSize sz = size;

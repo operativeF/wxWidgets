@@ -385,7 +385,7 @@ protected:
                    const wxPoint& pos = wxDefaultPosition,
                    const wxSize& size = wxDefaultSize,
                    long style = wxDEFAULT_FRAME_STYLE,
-                   const wxString& name = wxASCII_STR(wxFrameNameStr))
+                   std::string_view name = wxFrameNameStr)
             : wxTopLevelWindowNative(parent, winid, title,
                                      pos, size, style, name)
         {

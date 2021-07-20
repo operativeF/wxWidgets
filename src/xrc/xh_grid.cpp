@@ -32,7 +32,7 @@ wxObject *wxGridXmlHandler::DoCreateResource()
                    GetID(),
                    GetPosition(), GetSize(),
                    GetStyle(wxT("style")),
-                   GetName());
+                   std::string(GetName()));
 
     SetupWindow( grid);
 

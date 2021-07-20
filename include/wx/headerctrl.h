@@ -284,7 +284,7 @@ public:
                        const wxPoint& pos = wxDefaultPosition,
                        const wxSize& size = wxDefaultSize,
                        long style = wxHD_DEFAULT_STYLE,
-                       const wxString& name = wxASCII_STR(wxHeaderCtrlNameStr))
+                       std::string_view name = wxHeaderCtrlNameStr)
     {
         
         m_sortKey = wxNO_COLUMN;

@@ -40,7 +40,7 @@ wxBannerWindow::Create(wxWindow* parent,
                        const wxPoint& pos,
                        const wxSize& size,
                        long style,
-                       const wxString& name)
+                       std::string_view name)
 {
     if ( !wxWindow::Create(parent, winid, pos, size, style, name) )
         return false;

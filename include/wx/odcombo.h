@@ -250,7 +250,7 @@ public:
                          const wxString choices[],
                          long style = 0,
                          const wxValidator& validator = wxDefaultValidator,
-                         const wxString& name = wxASCII_STR(wxComboCtrlNameStr))
+                         std::string_view name = wxComboCtrlNameStr)
     {
         
 
@@ -266,7 +266,7 @@ public:
                 const wxSize& size = wxDefaultSize,
                 long style = 0,
                 const wxValidator& validator = wxDefaultValidator,
-                const wxString& name = wxASCII_STR(wxComboCtrlNameStr));
+                std::string_view name = wxComboCtrlNameStr);
 
     wxOwnerDrawnComboBox(wxWindow *parent,
                          wxWindowID id,
@@ -276,7 +276,7 @@ public:
                          const std::vector<wxString>& choices = {},
                          long style = 0,
                          const wxValidator& validator = wxDefaultValidator,
-                         const wxString& name = wxASCII_STR(wxComboCtrlNameStr));
+                         std::string_view name = wxComboCtrlNameStr);
 
     [[maybe_unused]] bool Create(wxWindow *parent,
                 wxWindowID id,
@@ -287,7 +287,7 @@ public:
                 const wxString choices[],
                 long style = 0,
                 const wxValidator& validator = wxDefaultValidator,
-                const wxString& name = wxASCII_STR(wxComboCtrlNameStr));
+                std::string_view name = wxComboCtrlNameStr);
 
     [[maybe_unused]] bool Create(wxWindow *parent,
                 wxWindowID id,
@@ -297,7 +297,7 @@ public:
                 const std::vector<wxString>& choices,
                 long style = 0,
                 const wxValidator& validator = wxDefaultValidator,
-                const wxString& name = wxASCII_STR(wxComboCtrlNameStr));
+                std::string_view name = wxComboCtrlNameStr);
 
     ~wxOwnerDrawnComboBox() override;
 

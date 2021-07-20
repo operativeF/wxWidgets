@@ -331,7 +331,7 @@ bool wxWindowBase::CreateBase(wxWindowBase *parent,
                               const wxPoint& WXUNUSED(pos),
                               const wxSize& size,
                               long style,
-                              const wxString& name)
+                              std::string_view name)
 {
     // ids are limited to 16 bits under MSW so if you care about portability,
     // it's not a good idea to use ids out of this range (and negative ids are
@@ -364,7 +364,7 @@ bool wxWindowBase::CreateBase(wxWindowBase *parent,
     if ( size != wxDefaultSize && !wxTopLevelWindows.Find((wxWindow *)this) )
         SetMinSize(size);
 
-    SetName(name);
+    SetName(std::string(name));
     SetParent(parent);
 
     return true;
@@ -376,7 +376,7 @@ bool wxWindowBase::CreateBase(wxWindowBase *parent,
                               const wxSize& size,
                               long style,
                               const wxValidator& wxVALIDATOR_PARAM(validator),
-                              const wxString& name)
+                              std::string_view name)
 {
     if ( !CreateBase(parent, id, pos, size, style, name) )
         return false;

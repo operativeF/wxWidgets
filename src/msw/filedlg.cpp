@@ -213,7 +213,7 @@ wxFileDialog::wxFileDialog(wxWindow *parent,
                            long style,
                            const wxPoint& pos,
                            const wxSize& sz,
-                           const wxString& name)
+                           std::string_view name)
             : wxFileDialogBase(parent, message, defaultDir, defaultFileName,
                                wildCard, style, pos, sz, name)
 

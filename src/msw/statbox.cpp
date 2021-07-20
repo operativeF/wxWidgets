@@ -73,7 +73,7 @@ bool wxStaticBox::Create(wxWindow *parent,
                          const wxPoint& pos,
                          const wxSize& size,
                          long style,
-                         const wxString& name)
+                         std::string_view name)
 {
     if ( !CreateControl(parent, id, pos, size, style, wxDefaultValidator, name) )
         return false;
@@ -99,7 +99,7 @@ bool wxStaticBox::Create(wxWindow* parent,
                          const wxPoint& pos,
                          const wxSize& size,
                          long style,
-                         const wxString& name)
+                         std::string_view name)
 {
     wxCHECK_MSG( labelWin, false, wxS("Label window can't be null") );
 

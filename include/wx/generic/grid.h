@@ -1475,7 +1475,7 @@ public:
             const wxPoint& pos = wxDefaultPosition,
             const wxSize& size = wxDefaultSize,
             long style = wxWANTS_CHARS,
-            const wxString& name = wxASCII_STR(wxGridNameStr))
+            std::string_view name = wxGridNameStr)
     {
         Init();
 
@@ -1487,7 +1487,7 @@ public:
                 const wxPoint& pos = wxDefaultPosition,
                 const wxSize& size = wxDefaultSize,
                 long style = wxWANTS_CHARS,
-                const wxString& name = wxASCII_STR(wxGridNameStr));
+                std::string_view name = wxGridNameStr);
 
     ~wxGrid() override;
 

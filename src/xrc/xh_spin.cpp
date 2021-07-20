@@ -43,7 +43,7 @@ wxObject *wxSpinButtonXmlHandler::DoCreateResource()
                     GetID(),
                     GetPosition(), GetSize(),
                     GetStyle(wxT("style"), wxSP_ARROW_KEYS),
-                    GetName());
+                    std::string(GetName()));
 
     control->SetValue(GetLong( wxT("value"), DEFAULT_VALUE));
     control->SetRange(GetLong( wxT("min"), DEFAULT_MIN),
@@ -97,7 +97,7 @@ wxObject *wxSpinCtrlXmlHandler::DoCreateResource()
                     GetLong(wxT("min"), DEFAULT_MIN),
                     GetLong(wxT("max"), DEFAULT_MAX),
                     GetLong(wxT("value"), DEFAULT_VALUE),
-                    GetName());
+                    std::string(GetName()));
 
     const long base = GetLong(wxS("base"), 10);
     if ( base != 10 )

@@ -715,7 +715,7 @@ public:
                             wxWindowID id,
                             const wxPoint &pos = wxDefaultPosition,
                             const wxSize &size = wxDefaultSize,
-                            const wxString &name = wxT("wxdataviewctrlmainwindow") );
+                            std::string_view name = "wxdataviewctrlmainwindow");
     ~wxDataViewMainWindow() override;
 
     bool IsList() const { return GetModel()->IsListModel(); }
@@ -2022,7 +2022,7 @@ wxBEGIN_EVENT_TABLE(wxDataViewMainWindow,wxWindow)
 wxEND_EVENT_TABLE()
 
 wxDataViewMainWindow::wxDataViewMainWindow( wxDataViewCtrl *parent, wxWindowID id,
-    const wxPoint &pos, const wxSize &size, const wxString &name )
+    const wxPoint &pos, const wxSize &size, std::string_view name )
 {
     // We want to use a specific class name for this window in wxMSW to make it
     // possible to configure screen readers to handle it specifically.

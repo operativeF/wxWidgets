@@ -79,7 +79,7 @@ bool wxListBox::Create(wxWindow *parent,
                        const std::vector<wxString>& choices,
                        long style,
                        const wxValidator& validator,
-                       const wxString& name)
+                       std::string_view name)
 {
     // initialize base class fields
     if ( !CreateControl(parent, id, pos, size, style, validator, name) )

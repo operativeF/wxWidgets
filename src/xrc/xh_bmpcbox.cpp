@@ -63,7 +63,7 @@ wxObject *wxBitmapComboBoxXmlHandler::DoCreateResource()
                         {},
                         GetStyle(),
                         wxDefaultValidator,
-                        GetName());
+                        std::string(GetName()));
 
         m_isInside = true;
         m_combobox = control;

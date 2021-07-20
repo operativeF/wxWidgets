@@ -38,7 +38,7 @@ wxObject *wxPanelXmlHandler::DoCreateResource()
                   GetID(),
                   GetPosition(), GetSize(),
                   GetStyle(wxT("style"), wxTAB_TRAVERSAL),
-                  GetName());
+                  std::string(GetName()));
 
     SetupWindow(panel);
     CreateChildren(panel);

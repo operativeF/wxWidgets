@@ -91,10 +91,10 @@ bool wxWebViewIE::Create(wxWindow* parent,
            const wxPoint& pos,
            const wxSize& size,
            long style,
-           const wxString& name)
+           std::string_view name)
 {
     if (!wxControl::Create(parent, id, pos, size, style,
-                           wxDefaultValidator, name.ToStdString()))
+                           wxDefaultValidator, name))
     {
         return false;
     }

@@ -106,7 +106,7 @@ wxObject *wxPropertySheetDialogXmlHandler::DoCreateResource()
                    GetPosition(),
                    GetSize(),
                    GetStyle(),
-                   GetName());
+                   std::string(GetName()));
 
         if (HasParam(wxT("icon")))
             dlg->SetIcons(GetIconBundle(wxT("icon"), wxART_FRAME_ICON));

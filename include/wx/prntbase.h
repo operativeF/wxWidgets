@@ -372,7 +372,7 @@ public:
                     const wxPoint& pos = wxDefaultPosition,
                     const wxSize& size = wxDefaultSize,
                     long style = 0,
-                    const wxString& name = wxT("canvas"));
+                    std::string_view name = "canvas");
     ~wxPreviewCanvas() override = default;
 
     wxPreviewCanvas(const wxPreviewCanvas&) = delete;
@@ -416,7 +416,7 @@ public:
                    const wxPoint& pos = wxDefaultPosition,
                    const wxSize& size = wxDefaultSize,
                    long style = wxDEFAULT_FRAME_STYLE | wxFRAME_FLOAT_ON_PARENT,
-                   const wxString& name = wxASCII_STR(wxFrameNameStr));
+                   std::string_view name = wxFrameNameStr);
     ~wxPreviewFrame() override;
 
     wxPreviewFrame(const wxPreviewFrame&) = delete;
@@ -509,7 +509,7 @@ public:
                         const wxPoint& pos = wxDefaultPosition,
                         const wxSize& size = wxDefaultSize,
                         long style = wxTAB_TRAVERSAL,
-                        const wxString& name = wxT("panel"));
+                        std::string_view name = "panel");
     ~wxPreviewControlBar() override = default;
 
     wxPreviewControlBar(const wxPreviewControlBar&) = delete;
@@ -772,7 +772,7 @@ public:
                        const wxPoint& pos = wxDefaultPosition,
                        const wxSize& size = wxDefaultSize,
                        long style = wxDEFAULT_DIALOG_STYLE,
-                       const wxString& name = wxT("dialog"));
+                       std::string_view name = "dialog");
 
     wxPrintAbortDialog(const wxPrintAbortDialog&) = delete;
     wxPrintAbortDialog& operator=(const wxPrintAbortDialog&) = delete;

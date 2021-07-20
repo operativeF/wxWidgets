@@ -104,7 +104,7 @@ bool wxEditableListBox::Create(wxWindow *parent, wxWindowID id,
                           const wxString& label,
                           const wxPoint& pos, const wxSize& size,
                           long style,
-                          const wxString& name)
+                          std::string_view name)
 {
     if (!wxPanel::Create(parent, id, pos, size, wxTAB_TRAVERSAL, name))
         return false;

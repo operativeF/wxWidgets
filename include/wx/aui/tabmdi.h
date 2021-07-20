@@ -46,7 +46,7 @@ public:
                         const wxPoint& pos = wxDefaultPosition,
                         const wxSize& size = wxDefaultSize,
                         long style = wxDEFAULT_FRAME_STYLE | wxVSCROLL | wxHSCROLL,
-                        const wxString& name = wxASCII_STR(wxFrameNameStr));
+                        std::string_view name = wxFrameNameStr);
 
     ~wxAuiMDIParentFrame() override;
 
@@ -56,7 +56,7 @@ public:
                 const wxPoint& pos = wxDefaultPosition,
                 const wxSize& size = wxDefaultSize,
                 long style = wxDEFAULT_FRAME_STYLE | wxVSCROLL | wxHSCROLL,
-                const wxString& name = wxASCII_STR(wxFrameNameStr) );
+                std::string_view name = wxFrameNameStr);
 
     void SetArtProvider(wxAuiTabArt* provider);
     wxAuiTabArt* GetArtProvider();
@@ -131,7 +131,7 @@ public:
                        const wxPoint& pos = wxDefaultPosition,
                        const wxSize& size = wxDefaultSize,
                        long style = wxDEFAULT_FRAME_STYLE,
-                       const wxString& name = wxASCII_STR(wxFrameNameStr));
+                       std::string_view name = wxFrameNameStr);
 
     ~wxAuiMDIChildFrame() override;
     [[maybe_unused]] bool Create(wxAuiMDIParentFrame *parent,
@@ -140,7 +140,7 @@ public:
                 const wxPoint& pos = wxDefaultPosition,
                 const wxSize& size = wxDefaultSize,
                 long style = wxDEFAULT_FRAME_STYLE,
-                const wxString& name = wxASCII_STR(wxFrameNameStr));
+                std::string_view name = wxFrameNameStr);
 
 #if wxUSE_MENUS
     void SetMenuBar(wxMenuBar *menuBar) override;

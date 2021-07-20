@@ -20,7 +20,7 @@ public:
                 long style = wxDD_DEFAULT_STYLE,
                 const wxPoint& pos = wxDefaultPosition,
                 const wxSize& size = wxDefaultSize,
-                const wxString& name = wxASCII_STR(wxDirDialogNameStr));
+                std::string_view name = wxDirDialogNameStr);
 
 wxDirDialog(const wxDirDialog&) = delete;
    wxDirDialog& operator=(const wxDirDialog&) = delete;

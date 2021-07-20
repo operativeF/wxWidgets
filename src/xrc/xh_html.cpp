@@ -37,7 +37,7 @@ wxObject *wxHtmlWindowXmlHandler::DoCreateResource()
                     GetID(),
                     GetPosition(), GetSize(),
                     GetStyle(wxT("style"), wxHW_SCROLLBAR_AUTO),
-                    GetName());
+                    std::string(GetName()));
 
     if (HasParam(wxT("borders")))
     {

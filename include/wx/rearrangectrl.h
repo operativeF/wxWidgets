@@ -57,7 +57,7 @@ public:
                     const std::vector<wxString>& items,
                     long style = 0,
                     const wxValidator& validator = wxDefaultValidator,
-                    const wxString& name = wxASCII_STR(wxRearrangeListNameStr))
+                    std::string_view name = wxRearrangeListNameStr)
     {
         Create(parent, id, pos, size, order, items, style, validator, name);
     }
@@ -77,7 +77,7 @@ public:
                 const std::vector<wxString>& items,
                 long style = 0,
                 const wxValidator& validator = wxDefaultValidator,
-                const wxString& name = wxASCII_STR(wxRearrangeListNameStr));
+                std::string_view name = wxRearrangeListNameStr);
 
 
     // items order
@@ -138,7 +138,7 @@ public:
                     const std::vector<wxString>& items,
                     long style = 0,
                     const wxValidator& validator = wxDefaultValidator,
-                    const wxString& name = wxASCII_STR(wxRearrangeListNameStr))
+                    std::string_view name = wxRearrangeListNameStr)
     {
         Create(parent, id, pos, size, order, items, style, validator, name);
     }
@@ -156,7 +156,7 @@ public:
                 const std::vector<wxString>& items,
                 long style = 0,
                 const wxValidator& validator = wxDefaultValidator,
-                const wxString& name = wxASCII_STR(wxRearrangeListNameStr));
+                std::string_view name = wxRearrangeListNameStr);
 
     // get the underlying listbox
     wxRearrangeList *GetList() const { return m_list; }
@@ -189,7 +189,7 @@ public:
                       const std::vector<int>& order,
                       const std::vector<wxString>& items,
                       const wxPoint& pos = wxDefaultPosition,
-                      const wxString& name = wxASCII_STR(wxRearrangeDialogNameStr))
+                      std::string_view name = wxRearrangeDialogNameStr)
     {
         Create(parent, message, title, order, items, pos, name);
     }
@@ -205,7 +205,7 @@ public:
                 const std::vector<int>& order,
                 const std::vector<wxString>& items,
                 const wxPoint& pos = wxDefaultPosition,
-                const wxString& name = wxASCII_STR(wxRearrangeDialogNameStr));
+                std::string_view name = wxRearrangeDialogNameStr);
 
 
     // methods for the dialog customization

@@ -125,7 +125,7 @@ public:
                               const wxPoint& pos = wxDefaultPosition,
                               const wxSize& size = wxDefaultSize,
                               long style = 0,
-                              const wxString& name = wxASCII_STR(wxWebViewNameStr)) = 0;
+                              std::string_view name = wxWebViewNameStr) = 0;
     virtual bool IsAvailable() { return true; }
     virtual wxVersionInfo GetVersionInfo() { return wxVersionInfo(); }
 };
@@ -149,7 +149,7 @@ public:
            const wxPoint& pos = wxDefaultPosition,
            const wxSize& size = wxDefaultSize,
            long style = 0,
-           const wxString& name = wxASCII_STR(wxWebViewNameStr)) = 0;
+           std::string_view name = wxWebViewNameStr) = 0;
 
     // Factory methods allowing the use of custom factories registered with
     // RegisterFactory
@@ -161,7 +161,7 @@ public:
                           const wxSize& size = wxDefaultSize,
                           const wxString& backend = wxASCII_STR(wxWebViewBackendDefault),
                           long style = 0,
-                          const wxString& name = wxASCII_STR(wxWebViewNameStr));
+                          std::string_view name = wxWebViewNameStr);
 
     static void RegisterFactory(const wxString& backend,
                                 std::shared_ptr<wxWebViewFactory> factory);

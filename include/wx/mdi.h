@@ -220,8 +220,8 @@ public:
     wxStatusBar* CreateStatusBar(int WXUNUSED(number) = 1,
                                  long WXUNUSED(style) = 1,
                                  wxWindowID WXUNUSED(id) = 1,
-                                 const wxString& WXUNUSED(name)
-                                    = wxEmptyString) override
+                                 std::string_view WXUNUSED(name)
+                                    = "") override
       { return nullptr; }
 
     wxStatusBar *GetStatusBar() const override
@@ -240,7 +240,7 @@ public:
     // TODO: again, it should be possible to have tool bars
     wxToolBar *CreateToolBar(long WXUNUSED(style),
                              wxWindowID WXUNUSED(id),
-                             const wxString& WXUNUSED(name)) override
+                             std::string_view WXUNUSED(name)) override
         { return nullptr; }
     wxToolBar *GetToolBar() const override { return nullptr; }
 #endif // wxUSE_TOOLBAR

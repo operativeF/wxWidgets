@@ -176,7 +176,7 @@ wxCheckListBox::wxCheckListBox(wxWindow *parent, wxWindowID id,
                                const wxPoint& pos, const wxSize& size,
                                const std::vector<wxString>& choices,
                                long style, const wxValidator& val,
-                               const wxString& name)
+                               std::string_view name)
 {
     Create(parent, id, pos, size, choices, style, val, name);
 }
@@ -185,7 +185,7 @@ bool wxCheckListBox::Create(wxWindow *parent, wxWindowID id,
                             const wxPoint& pos, const wxSize& size,
                             const std::vector<wxString>& choices,
                             long style,
-                            const wxValidator& validator, const wxString& name)
+                            const wxValidator& validator, std::string_view name)
 {
     return wxListBox::Create(parent, id, pos, size, choices,
                              style | wxLB_OWNERDRAW, validator, name);

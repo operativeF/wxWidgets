@@ -40,7 +40,7 @@ bool wxFileDialogBase::Create(wxWindow *parent,
                               long style,
                               const wxPoint& WXUNUSED(pos),
                               const wxSize& WXUNUSED(sz),
-                              const wxString& WXUNUSED(name))
+                              std::string_view WXUNUSED(name))
 {
     m_message = message;
     m_dir = defaultDir;

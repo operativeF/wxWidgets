@@ -501,7 +501,7 @@ wxWebViewEdge::wxWebViewEdge(wxWindow* parent,
     const wxPoint& pos,
     const wxSize& size,
     long style,
-    const wxString& name):
+    std::string_view name):
     m_impl(new wxWebViewEdgeImpl(this))
 {
     Create(parent, id, url, pos, size, style, name);
@@ -521,7 +521,7 @@ bool wxWebViewEdge::Create(wxWindow* parent,
     const wxPoint& pos,
     const wxSize& size,
     long style,
-    const wxString& name)
+    std::string_view name)
 {
     if (!wxWebViewEdgeImpl::Initialize())
         return false;

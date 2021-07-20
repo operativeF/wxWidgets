@@ -33,7 +33,7 @@ public:
                int majorDim = 0,
                long style = wxRA_SPECIFY_COLS,
                const wxValidator& val = wxDefaultValidator,
-               const wxString& name = wxASCII_STR(wxRadioBoxNameStr))
+               std::string_view name = wxRadioBoxNameStr)
     {
         Create(parent, id, title, pos, size, choices, majorDim,
                      style, val, name);
@@ -55,7 +55,7 @@ public:
                 int majorDim = 0,
                 long style = wxRA_SPECIFY_COLS,
                 const wxValidator& val = wxDefaultValidator,
-                const wxString& name = wxASCII_STR(wxRadioBoxNameStr));
+                std::string_view name = wxRadioBoxNameStr);
 
     // implement the radiobox interface
     void SetSelection(int n) override;

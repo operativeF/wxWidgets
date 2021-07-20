@@ -317,7 +317,7 @@ bool wxHtmlHelpWindow::Create(wxWindow* parent, wxWindowID id,
         ReadCustomization(m_Config, m_ConfigRoot);
 #endif // wxUSE_CONFIG
 
-    wxWindow::Create(parent, id, pos, size, style, wxT("wxHtmlHelp"));
+    wxWindow::Create(parent, id, pos, size, style, "wxHtmlHelp");
 
     SetHelpText(_("Displays help as you browse the books on the left."));
 
@@ -1217,7 +1217,7 @@ public:
                       {}, wxCB_DROPDOWN | wxCB_READONLY));
 
         sizer->Add(FontSize = new wxSpinCtrl(this, wxID_ANY, wxEmptyString, wxDefaultPosition,
-                      wxDefaultSize, wxSP_ARROW_KEYS, 2, 100, 2, wxT("wxSpinCtrl")));
+                      wxDefaultSize, wxSP_ARROW_KEYS, 2, 100, 2, "wxSpinCtrl"));
 
         topsizer->Add(sizer, 0, wxLEFT|wxRIGHT|wxTOP, 10);
 

@@ -958,7 +958,7 @@ bool wxComboCtrlBase::Create(wxWindow *parent,
                              const wxSize& size,
                              long style,
                              const wxValidator& validator,
-                             const std::string& name)
+                             std::string_view name)
 {
     if ( !wxControl::Create(parent,
                             id,

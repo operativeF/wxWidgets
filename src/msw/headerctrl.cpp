@@ -1008,7 +1008,7 @@ bool wxHeaderCtrl::Create(wxWindow *parent,
                           const wxPoint& pos,
                           const wxSize& size,
                           long style,
-                          const wxString& name)
+                          std::string_view name)
 {
     long newStyle = style | wxCLIP_CHILDREN | wxTAB_TRAVERSAL;
     if ( !wxWindow::Create(parent, id, pos, size, newStyle, name) )

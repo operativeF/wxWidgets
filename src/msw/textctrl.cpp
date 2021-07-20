@@ -363,7 +363,7 @@ bool wxTextCtrl::Create(wxWindow *parent,
                         const wxSize& size,
                         long style,
                         const wxValidator& validator,
-                        const wxString& name)
+                        std::string_view name)
 {
     // base initialization
     if ( !CreateControl(parent, id, pos, size, style, validator, name) )

@@ -41,7 +41,7 @@ wxObject *wxBitmapButtonXmlHandler::DoCreateResource()
     {
         button->CreateCloseButton(m_parentAsWindow,
                                   GetID(),
-                                  GetName());
+                                  std::string(GetName()));
     }
     else
     {
@@ -51,7 +51,7 @@ wxObject *wxBitmapButtonXmlHandler::DoCreateResource()
                        GetPosition(), GetSize(),
                        GetStyle(wxT("style")),
                        wxDefaultValidator,
-                       GetName());
+                       std::string(GetName()));
     }
 
     if (GetBool(wxT("default"), false))

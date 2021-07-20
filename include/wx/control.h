@@ -47,7 +47,7 @@ public:
                 const wxSize& size = wxDefaultSize,
                 long style = 0,
                 const wxValidator& validator = wxDefaultValidator,
-                const std::string& name = wxControlNameStr);
+                std::string_view name = wxControlNameStr);
 
     // get the control alignment (left/right/centre, top/bottom/centre)
     int GetAlignment() const { return m_windowStyle & wxALIGN_MASK; }
@@ -173,7 +173,7 @@ protected:
                        const wxSize& size,
                        long style,
                        const wxValidator& validator,
-                       const wxString& name);
+                       std::string_view name);
 
 #if wxUSE_MARKUP
     // This function may be overridden in the derived classes to implement

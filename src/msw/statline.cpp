@@ -33,7 +33,7 @@ bool wxStaticLine::Create(wxWindow *parent,
                           const wxPoint& pos,
                           const wxSize& sizeOrig,
                           long style,
-                          const wxString &name)
+                          std::string_view name)
 {
     wxSize size = AdjustSize(sizeOrig);
 

@@ -1578,14 +1578,14 @@ protected:
                     const wxSize& size = wxDefaultSize,
                     long style = 0,
                     const wxValidator& validator = wxDefaultValidator,
-                    const wxString& name = wxASCII_STR(wxPanelNameStr));
+                    std::string_view name = wxPanelNameStr);
 
     bool CreateBase(wxWindowBase *parent,
                     wxWindowID winid,
                     const wxPoint& pos,
                     const wxSize& size,
                     long style,
-                    const wxString& name);
+                    std::string_view name);
 
     // event handling specific to wxWindow
     bool TryBefore(wxEvent& event) override;

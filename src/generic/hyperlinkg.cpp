@@ -48,7 +48,7 @@ constexpr int wxHYPERLINK_POPUP_COPY_ID = 16384;
 
 bool wxGenericHyperlinkCtrl::Create(wxWindow *parent, wxWindowID id,
     const wxString& label, const wxString& url, const wxPoint& pos,
-    const wxSize& size, long style, const wxString& name)
+    const wxSize& size, long style, std::string_view name)
 {
     // do validation checks:
     CheckParams(label, url, style);
@@ -56,7 +56,7 @@ bool wxGenericHyperlinkCtrl::Create(wxWindow *parent, wxWindowID id,
     if ((style & wxHL_ALIGN_LEFT) == 0)
         style |= wxFULL_REPAINT_ON_RESIZE;
 
-    if (!wxControl::Create(parent, id, pos, size, style, wxDefaultValidator, name.ToStdString()))
+    if (!wxControl::Create(parent, id, pos, size, style, wxDefaultValidator, name))
         return false;
 
     // set to non-empty strings both the url and the label

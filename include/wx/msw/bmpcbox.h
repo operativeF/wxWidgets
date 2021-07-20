@@ -35,7 +35,7 @@ public:
                      const std::vector<wxString>& choices = {},
                      long style = 0,
                      const wxValidator& validator = wxDefaultValidator,
-                     const wxString& name = wxASCII_STR(wxBitmapComboBoxNameStr))
+                     std::string_view name = wxBitmapComboBoxNameStr)
         
           
     {
@@ -51,7 +51,7 @@ public:
                 const std::vector<wxString>& choices,
                 long style = 0,
                 const wxValidator& validator = wxDefaultValidator,
-                const wxString& name = wxASCII_STR(wxBitmapComboBoxNameStr));
+                std::string_view name = wxBitmapComboBoxNameStr);
 
     ~wxBitmapComboBox() override;
 

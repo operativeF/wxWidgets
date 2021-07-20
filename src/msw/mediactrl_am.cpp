@@ -821,7 +821,7 @@ public:
                                      const wxSize& size,
                                      long style,
                                      const wxValidator& validator,
-                                     const wxString& name) override;
+                                     std::string_view name) override;
 
     bool Play() override;
     bool Pause() override;
@@ -998,7 +998,7 @@ bool wxAMMediaBackend::CreateControl(wxControl* ctrl, wxWindow* parent,
                                      const wxSize& size,
                                      long style,
                                      const wxValidator& validator,
-                                     const wxString& name)
+                                     std::string_view name)
 {
     // First get the AMGetErrorText procedure in debug
     // mode for more meaningful messages
@@ -1039,7 +1039,7 @@ bool wxAMMediaBackend::CreateControl(wxControl* ctrl, wxWindow* parent,
     //
     if ( !ctrl->wxControl::Create(parent, id, pos, size,
                             (style & ~wxBORDER_MASK) | wxBORDER_NONE,
-                            validator, name.ToStdString()) )
+                            validator, name) )
         return false;
 
     //

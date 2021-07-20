@@ -41,7 +41,7 @@ wxObject *wxCheckBoxXmlHandler::DoCreateResource()
                     GetPosition(), GetSize(),
                     GetStyle(),
                     wxDefaultValidator,
-                    GetName());
+                    std::string(GetName()));
 
     control->SetValue(GetBool( wxT("checked")));
     SetupWindow(control);

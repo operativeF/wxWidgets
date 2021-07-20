@@ -36,7 +36,7 @@ wxObject *wxStaticBoxXmlHandler::DoCreateResource()
                 GetText(wxT("label")),
                 GetPosition(), GetSize(),
                 GetStyle(),
-                GetName());
+                std::string(GetName()));
 
     SetupWindow(box);
 

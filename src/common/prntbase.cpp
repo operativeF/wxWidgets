@@ -492,7 +492,7 @@ wxPrintAbortDialog::wxPrintAbortDialog(wxWindow *parent,
                                        const wxPoint& pos,
                                        const wxSize& size,
                                        long style,
-                                       const wxString& name)
+                                       std::string_view name)
     : wxDialog(parent, wxID_ANY, _("Printing"), pos, size, style, name)
 {
     wxBoxSizer *mainSizer = new wxBoxSizer(wxVERTICAL);
@@ -881,7 +881,7 @@ wxEND_EVENT_TABLE()
 //     really horrible flicker when resizing the preview frame, but without
 //     this style it simply doesn't work correctly at all...
 wxPreviewCanvas::wxPreviewCanvas(wxPrintPreviewBase *preview, wxWindow *parent,
-                                 const wxPoint& pos, const wxSize& size, long style, const wxString& name)
+                                 const wxPoint& pos, const wxSize& size, long style, std::string_view name)
     : wxScrolledWindow(parent, wxID_ANY, pos, size, style | wxFULL_REPAINT_ON_RESIZE, name),
       m_printPreview(preview)
 {
@@ -1256,7 +1256,7 @@ wxEND_EVENT_TABLE()
 
 wxPreviewControlBar::wxPreviewControlBar(wxPrintPreviewBase *preview, long buttons,
                                          wxWindow *parent, const wxPoint& pos, const wxSize& size,
-                                         long style, const wxString& name)
+                                         long style, std::string_view name)
     : wxPanel(parent, wxID_ANY, pos, size, style, name),
       m_printPreview(preview),
       m_buttonFlags(buttons)
@@ -1647,7 +1647,7 @@ void wxPreviewFrame::OnChar(wxKeyEvent &event)
 }
 
 wxPreviewFrame::wxPreviewFrame(wxPrintPreviewBase *preview, wxWindow *parent, const wxString& title,
-                               const wxPoint& pos, const wxSize& size, long style, const wxString& name)
+                               const wxPoint& pos, const wxSize& size, long style, std::string_view name)
     : wxFrame(parent, wxID_ANY, title, pos, size, style, name),
       m_printPreview(preview)
 {

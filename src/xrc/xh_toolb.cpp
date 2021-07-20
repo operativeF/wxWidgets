@@ -190,7 +190,7 @@ wxObject *wxToolBarXmlHandler::DoCreateResource()
                          GetPosition(),
                          GetSize(),
                          style,
-                         GetName());
+                         std::string(GetName()));
         SetupWindow(toolbar);
 
         m_toolSize = GetSize(wxT("bitmapsize"));

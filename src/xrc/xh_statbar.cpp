@@ -47,7 +47,7 @@ wxObject *wxStatusBarXmlHandler::DoCreateResource()
     statbar->Create(m_parentAsWindow,
                     GetID(),
                     GetStyle(),
-                    GetName());
+                    std::string(GetName()));
 
     int fields = GetLong(wxT("fields"), 1);
     wxString widths = GetParamValue(wxT("widths"));

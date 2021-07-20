@@ -57,7 +57,7 @@ wxObject *wxSliderXmlHandler::DoCreateResource()
                     GetPosition(), GetSize(),
                     GetStyle(),
                     wxDefaultValidator,
-                    GetName());
+                    std::string(GetName()));
 
     if( HasParam(wxT("tickfreq")))
     {

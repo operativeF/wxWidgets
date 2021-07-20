@@ -64,7 +64,7 @@ wxWindow *wxMdiXmlHandler::CreateFrame()
                       wxDefaultPosition, wxDefaultSize,
                       GetStyle(wxT("style"),
                                wxDEFAULT_FRAME_STYLE | wxVSCROLL | wxHSCROLL),
-                      GetName());
+                      std::string(GetName()));
         return frame;
     }
     else // wxMDIChildFrame
@@ -84,7 +84,7 @@ wxWindow *wxMdiXmlHandler::CreateFrame()
                       GetText(wxT("title")),
                       wxDefaultPosition, wxDefaultSize,
                       GetStyle(wxT("style"), wxDEFAULT_FRAME_STYLE),
-                      GetName());
+                      std::string(GetName()));
 
         return frame;
     }

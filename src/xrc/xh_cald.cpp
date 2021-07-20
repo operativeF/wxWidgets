@@ -48,7 +48,7 @@ wxObject *wxCalendarCtrlXmlHandler::DoCreateResource()
                      /*TODO: take it from resource*/
                      GetPosition(), GetSize(),
                      GetStyle(),
-                     GetName());
+                     std::string(GetName()));
 
     SetupWindow(calendar);
 

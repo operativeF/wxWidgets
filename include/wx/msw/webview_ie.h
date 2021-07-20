@@ -55,7 +55,7 @@ public:
            const wxPoint& pos = wxDefaultPosition,
            const wxSize& size = wxDefaultSize,
            long style = 0,
-           const wxString& name = wxASCII_STR(wxWebViewNameStr))
+           std::string_view name = wxWebViewNameStr)
    {
        Create(parent, id, url, pos, size, style, name);
    }
@@ -68,7 +68,7 @@ public:
            const wxPoint& pos = wxDefaultPosition,
            const wxSize& size = wxDefaultSize,
            long style = 0,
-           const wxString& name = wxASCII_STR(wxWebViewNameStr)) override;
+           std::string_view name = wxWebViewNameStr) override;
 
     void LoadURL(const wxString& url) override;
     void LoadHistoryItem(std::shared_ptr<wxWebViewHistoryItem> item) override;
@@ -190,7 +190,7 @@ public:
                               const wxPoint& pos = wxDefaultPosition,
                               const wxSize& size = wxDefaultSize,
                               long style = 0,
-                              const wxString& name = wxASCII_STR(wxWebViewNameStr)) override
+                              std::string_view name = wxWebViewNameStr) override
     { return new wxWebViewIE(parent, id, url, pos, size, style, name); }
     wxVersionInfo GetVersionInfo() override;
 };

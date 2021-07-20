@@ -34,7 +34,7 @@ public:
         // Always add the wxTAB_TRAVERSAL and wxNO_BORDER styles to what comes
         // from the XRC if anything.
         : wxPanel(parent, id, pos, size, style | wxTAB_TRAVERSAL | wxNO_BORDER,
-                  controlName + wxT("_container")),
+                  std::string(controlName) + "_container"),
           m_controlName(controlName),
           m_control(nullptr)
     {

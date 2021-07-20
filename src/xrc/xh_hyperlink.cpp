@@ -67,7 +67,7 @@ wxObject *wxHyperlinkCtrlXmlHandler::DoCreateResource()
                 GetParamValue(wxT("url")),
                 GetPosition(), GetSize(),
                 GetStyle(wxT("style"), wxHL_DEFAULT_STYLE),
-                GetName()
+                std::string(GetName())
              );
 
     SetupWindow(control);

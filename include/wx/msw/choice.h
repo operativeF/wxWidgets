@@ -33,7 +33,7 @@ public:
         const std::vector<wxString>& choices = {},
         long style = 0,
         const wxValidator& validator = wxDefaultValidator,
-        const wxString& name = wxASCII_STR(wxChoiceNameStr))
+        std::string_view name = wxChoiceNameStr)
     {
         Create(parent, id, pos, size, choices, style, validator, name);
     }
@@ -50,7 +50,7 @@ public:
                 const std::vector<wxString>& choices,
                 long style = 0,
                 const wxValidator& validator = wxDefaultValidator,
-                const wxString& name = wxASCII_STR(wxChoiceNameStr));
+                std::string_view name = wxChoiceNameStr);
 
     bool Show(bool show = true) override;
 
@@ -123,7 +123,7 @@ protected:
                        const std::vector<wxString>& choices,
                        long style,
                        const wxValidator& validator,
-                       const wxString& name);
+                       std::string_view name);
 
     // free all memory we have (used by Clear() and dtor)
     void Free();

@@ -41,7 +41,7 @@ wxObject *wxCommandLinkButtonXmlHandler::DoCreateResource()
                     GetPosition(), GetSize(),
                     GetStyle(),
                     wxDefaultValidator,
-                    GetName());
+                    std::string(GetName()));
 
     if (GetBool(wxT("default"), false))
         button->SetDefault();

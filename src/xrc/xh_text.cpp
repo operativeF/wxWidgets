@@ -59,7 +59,7 @@ wxObject *wxTextCtrlXmlHandler::DoCreateResource()
                  GetPosition(), GetSize(),
                  GetStyle(),
                  wxDefaultValidator,
-                 GetName());
+                 std::string(GetName()));
 
     SetupWindow(text);
 

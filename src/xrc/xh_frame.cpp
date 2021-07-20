@@ -59,7 +59,7 @@ wxObject *wxFrameXmlHandler::DoCreateResource()
                   GetText(wxT("title")),
                   wxDefaultPosition, wxDefaultSize,
                   GetStyle(wxT("style"), wxDEFAULT_FRAME_STYLE),
-                  GetName());
+                  std::string(GetName()));
 
     if (HasParam(wxT("size")))
         frame->SetClientSize(GetSize(wxT("size"), frame));

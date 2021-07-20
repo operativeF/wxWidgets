@@ -27,7 +27,7 @@ public:
                         const wxSize& size = wxDefaultSize,
                         long style = 0,
                         const wxValidator& validator = wxDefaultValidator,
-                        const wxString& name = wxASCII_STR(wxButtonNameStr))
+                        std::string_view name = wxButtonNameStr)
          
     {
         Create(parent, id, mainLabel, note, pos, size, style, validator, name);
@@ -46,7 +46,7 @@ wxCommandLinkButton(const wxCommandLinkButton&) = delete;
                 const wxSize& size = wxDefaultSize,
                 long style = 0,
                 const wxValidator& validator = wxDefaultValidator,
-                const wxString& name = wxASCII_STR(wxButtonNameStr));
+                std::string_view name = wxButtonNameStr);
 
     // do the same thing as in the generic case here
     void SetLabel(const wxString& label) override

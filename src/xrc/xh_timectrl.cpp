@@ -34,7 +34,7 @@ wxObject *wxTimeCtrlXmlHandler::DoCreateResource()
                   GetPosition(), GetSize(),
                   GetStyle(wxT("style"), wxTP_DEFAULT),
                   wxDefaultValidator,
-                  GetName());
+                  std::string(GetName()));
 
     SetupWindow(picker);
 

@@ -41,7 +41,7 @@ public:
                       const wxPoint& pos = wxDefaultPosition,
                       const wxSize& size = wxDefaultSize,
                       long style = wxEL_DEFAULT_STYLE,
-                      const wxString& name = wxASCII_STR(wxEditableListBoxNameStr))
+                      std::string_view name = wxEditableListBoxNameStr)
     {
         Create(parent, id, label, pos, size, style, name);
     }
@@ -51,7 +51,7 @@ public:
                 const wxPoint& pos = wxDefaultPosition,
                 const wxSize& size = wxDefaultSize,
                 long style = wxEL_DEFAULT_STYLE,
-                const wxString& name = wxASCII_STR(wxEditableListBoxNameStr));
+                std::string_view name = wxEditableListBoxNameStr);
 
     void SetStrings(const std::vector<wxString>& strings);
     void GetStrings(std::vector<wxString>& strings) const;

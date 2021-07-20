@@ -218,7 +218,7 @@ wxHtmlListBox::wxHtmlListBox(wxWindow *parent,
                              const wxPoint& pos,
                              const wxSize& size,
                              long style,
-                             const wxString& name)
+                             std::string_view name)
     : wxHtmlWindowMouseHelper(this),
       m_htmlRendStyle(new wxHtmlListBoxStyle(*this)),
       m_cache(new wxHtmlListBoxCache)
@@ -231,7 +231,7 @@ bool wxHtmlListBox::Create(wxWindow *parent,
                            const wxPoint& pos,
                            const wxSize& size,
                            long style,
-                           const wxString& name)
+                           std::string_view name)
 {
     return wxVListBox::Create(parent, id, pos, size, style, name);
 }
@@ -599,7 +599,7 @@ bool wxSimpleHtmlListBox::Create(wxWindow *parent, wxWindowID id,
                                  const std::vector<wxString>& choices,
                                  long style,
                                  const wxValidator& wxVALIDATOR_PARAM(validator),
-                                 const wxString& name)
+                                 std::string_view name)
 {
     if (!wxHtmlListBox::Create(parent, id, pos, size, style, name))
         return false;

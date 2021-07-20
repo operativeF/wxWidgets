@@ -37,7 +37,7 @@ bool wxRearrangeList::Create(wxWindow *parent,
                              const std::vector<wxString>& items,
                              long style,
                              const wxValidator& validator,
-                             const wxString& name)
+                             std::string_view name)
 {
     // construct the array of items in the order in which they should appear in
     // the control
@@ -243,7 +243,7 @@ wxRearrangeCtrl::Create(wxWindow *parent,
                         const std::vector<wxString>& items,
                         long style,
                         const wxValidator& validator,
-                        const wxString& name)
+                        std::string_view name)
 {
     // create all the windows
     if ( !wxPanel::Create(parent, id, pos, size, wxTAB_TRAVERSAL, name) )
@@ -308,7 +308,7 @@ bool wxRearrangeDialog::Create(wxWindow *parent,
                                const std::vector<int>& order,
                                const std::vector<wxString>& items,
                                const wxPoint& pos,
-                               const wxString& name)
+                               std::string_view name)
 {
     if ( !wxDialog::Create(parent, wxID_ANY, title,
                            pos, wxDefaultSize,

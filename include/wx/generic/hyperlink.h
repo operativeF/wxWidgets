@@ -37,7 +37,7 @@ public:
                             const wxPoint& pos = wxDefaultPosition,
                             const wxSize& size = wxDefaultSize,
                             long style = wxHL_DEFAULT_STYLE,
-                            const wxString& name = wxASCII_STR(wxHyperlinkCtrlNameStr))
+                            std::string_view name = wxHyperlinkCtrlNameStr)
     {
         
     m_rollover = false;
@@ -59,7 +59,7 @@ public:
                 const wxPoint& pos = wxDefaultPosition,
                 const wxSize& size = wxDefaultSize,
                 long style = wxHL_DEFAULT_STYLE,
-                const wxString& name = wxASCII_STR(wxHyperlinkCtrlNameStr));
+                std::string_view name = wxHyperlinkCtrlNameStr);
 
 
     // get/set

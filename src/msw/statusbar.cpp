@@ -92,7 +92,7 @@ WXDWORD wxStatusBar::MSWGetStyle(long style, WXDWORD *exstyle) const
 bool wxStatusBar::Create(wxWindow *parent,
                          wxWindowID id,
                          long style,
-                         const wxString& name)
+                         std::string_view name)
 {
     if ( !CreateControl(parent, id, wxDefaultPosition, wxDefaultSize,
                         style, wxDefaultValidator, name) )

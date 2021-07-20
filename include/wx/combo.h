@@ -165,7 +165,7 @@ public:
                 const wxSize& size,
                 long style,
                 const wxValidator& validator,
-                const std::string& name);
+                std::string_view name);
 
     ~wxComboCtrlBase() override;
 

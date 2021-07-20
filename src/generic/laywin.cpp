@@ -41,7 +41,7 @@ wxBEGIN_EVENT_TABLE(wxSashLayoutWindow, wxSashWindow)
 wxEND_EVENT_TABLE()
 
 bool wxSashLayoutWindow::Create(wxWindow *parent, wxWindowID id, const wxPoint& pos,
-        const wxSize& size, long style, const wxString& name)
+        const wxSize& size, long style, std::string_view name)
 {
     return wxSashWindow::Create(parent, id, pos, size, style, name);
 }

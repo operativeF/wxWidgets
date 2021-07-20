@@ -262,7 +262,7 @@ bool wxSpinCtrl::Create(wxWindow *parent,
                         const wxSize& size,
                         long style,
                         int min, int max, int initial,
-                        const wxString& name)
+                        std::string_view name)
 {
     // set style for the base class
     style |= wxSP_VERTICAL;
@@ -359,7 +359,7 @@ bool wxSpinCtrl::Create(wxWindow *parent,
     {
         wxLogDebug(wxS("wxSpinCtrl \"%s\": initial width %d is too small, ")
                    wxS("at least %d pixels needed."),
-                   name, size.x, GetBestSize().x);
+                   std::string(name), size.x, GetBestSize().x);
     }
 
     SetInitialSize(size);
@@ -630,7 +630,7 @@ bool wxSpinCtrl::Reparent(wxWindowBase *newParent)
     // create and initialize the new one
     if ( !wxSpinButton::Create(GetParent(), GetId(),
                                wxPoint(0, 0), wxSize(0, 0), // it will have a buddy
-                               GetWindowStyle(), GetName()) )
+                               GetWindowStyle(), std::string(GetName())) )
         return false;
 
     // reapply our values to wxSpinButton

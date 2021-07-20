@@ -576,7 +576,7 @@ public:
                       const wxPoint& pos = wxDefaultPosition,
                       const wxSize& size = wxDefaultSize,
                       long style = 0,
-                      const wxString& name = wxASCII_STR(wxPanelNameStr))
+                      std::string_view name = wxPanelNameStr)
     : wxVarVScrollLegacyAdaptor(this)
     {
         Create(parent, id, pos, size, style, name);
@@ -596,7 +596,7 @@ public:
                 const wxPoint& pos = wxDefaultPosition,
                 const wxSize& size = wxDefaultSize,
                 long style = 0,
-                const wxString& name = wxASCII_STR(wxPanelNameStr))
+                std::string_view name = wxPanelNameStr)
     {
         return wxPanel::Create(parent, id, pos, size, style | wxVSCROLL, name);
     }
@@ -647,7 +647,7 @@ public:
                       const wxPoint& pos = wxDefaultPosition,
                       const wxSize& size = wxDefaultSize,
                       long style = 0,
-                      const wxString& name = wxASCII_STR(wxPanelNameStr))
+                      std::string_view name = wxPanelNameStr)
         : wxVarHScrollHelper(this)
     {
         Create(parent, id, pos, size, style, name);
@@ -667,7 +667,7 @@ public:
                 const wxPoint& pos = wxDefaultPosition,
                 const wxSize& size = wxDefaultSize,
                 long style = 0,
-                const wxString& name = wxASCII_STR(wxPanelNameStr))
+                std::string_view name = wxPanelNameStr)
     {
         return wxPanel::Create(parent, id, pos, size, style | wxHSCROLL, name);
     }
@@ -714,7 +714,7 @@ public:
                        const wxPoint& pos = wxDefaultPosition,
                        const wxSize& size = wxDefaultSize,
                        long style = 0,
-                       const wxString& name = wxASCII_STR(wxPanelNameStr))
+                       std::string_view name = wxPanelNameStr)
         : 
           wxVarHVScrollHelper(this)
     {
@@ -735,7 +735,7 @@ public:
                 const wxPoint& pos = wxDefaultPosition,
                 const wxSize& size = wxDefaultSize,
                 long style = 0,
-                const wxString& name = wxASCII_STR(wxPanelNameStr))
+                std::string_view name = wxPanelNameStr)
     {
         return wxPanel::Create(parent, id, pos, size,
                                style | wxVSCROLL | wxHSCROLL, name);

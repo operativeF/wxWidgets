@@ -880,7 +880,7 @@ bool wxOwnerDrawnComboBox::Create(wxWindow *parent,
                                   const wxSize& size,
                                   long style,
                                   const wxValidator& validator,
-                                  const wxString& name)
+                                  std::string_view name)
 {
     return wxComboCtrl::Create(parent,id,value,pos,size,style,validator,name);
 }
@@ -893,7 +893,7 @@ wxOwnerDrawnComboBox::wxOwnerDrawnComboBox(wxWindow *parent,
                                            const std::vector<wxString>& choices,
                                            long style,
                                            const wxValidator& validator,
-                                           const wxString& name)
+                                           std::string_view name)
 {
     
 
@@ -909,7 +909,7 @@ bool wxOwnerDrawnComboBox::Create(wxWindow *parent,
                                   const std::vector<wxString>& choices,
                                   long style,
                                   const wxValidator& validator,
-                                  const wxString& name)
+                                  std::string_view name)
 {
     m_initChs = choices;
     //wxCArrayString chs(choices);
@@ -929,7 +929,7 @@ bool wxOwnerDrawnComboBox::Create(wxWindow *parent,
                                   const wxString choices[],
                                   long style,
                                   const wxValidator& validator,
-                                  const wxString& name)
+                                  std::string_view name)
 {
 
     if ( !Create(parent, id, value, pos, size, style,

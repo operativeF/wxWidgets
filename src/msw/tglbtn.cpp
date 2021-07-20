@@ -47,7 +47,7 @@ wxIMPLEMENT_DYNAMIC_CLASS(wxBitmapToggleButton, wxToggleButton);
 
 bool wxBitmapToggleButton::Create( wxWindow *parent, wxWindowID id,
                 const wxBitmap& label,const wxPoint& pos, const wxSize& size, long style,
-                const wxValidator& validator, const wxString& name )
+                const wxValidator& validator, std::string_view name )
 {
     if (!wxToggleButton::Create( parent, id, wxEmptyString, pos, size, style, validator, name ))
         return false;
@@ -81,7 +81,7 @@ bool wxToggleButton::Create(wxWindow *parent,
                             const wxPoint& pos,
                             const wxSize& size, long style,
                             const wxValidator& validator,
-                            const wxString& name)
+                            std::string_view name)
 {
     if ( !CreateControl(parent, id, pos, size, style, validator, name) )
         return false;

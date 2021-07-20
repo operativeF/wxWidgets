@@ -34,7 +34,7 @@ wxObject *wxBannerWindowXmlHandler::DoCreateResource()
                    GetPosition(),
                    GetSize(),
                    GetStyle(wxS("style")),
-                   GetName());
+                   std::string(GetName()));
 
     SetupWindow(banner);
 

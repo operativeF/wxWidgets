@@ -16,7 +16,7 @@
 
 #include "wx/datetimectrl.h"
 
-#define wxTimePickerCtrlNameStr wxS("timectrl")
+inline constexpr std::string_view wxTimePickerCtrlNameStr = "timectrl";
 
 // No special styles are currently defined for this control but still define a
 // symbolic constant for the default style for consistency.

@@ -46,7 +46,7 @@ wxObject *wxRadioButtonXmlHandler::DoCreateResource()
                     GetPosition(), GetSize(),
                     GetStyle(),
                     wxDefaultValidator,
-                    GetName());
+                    std::string(GetName()));
 
     control->SetValue(GetBool(wxT("value"), false));
     SetupWindow(control);

@@ -16,7 +16,7 @@
 
 #include "wx/control.h"
 
-#define wxActivityIndicatorNameStr wxS("activityindicator")
+inline constexpr std::string_view wxActivityIndicatorNameStr = "activityindicator";
 
 // ----------------------------------------------------------------------------
 // wxActivityIndicator: small animated indicator of some application activity.

@@ -50,7 +50,7 @@ wxObject *wxChoiceXmlHandler::DoCreateResource()
                         strList,
                         GetStyle(),
                         wxDefaultValidator,
-                        GetName());
+                        std::string(GetName()));
 
         if (selection != -1)
             control->SetSelection(selection);

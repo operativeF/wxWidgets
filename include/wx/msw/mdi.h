@@ -31,7 +31,7 @@ public:
                      const wxPoint& pos = wxDefaultPosition,
                      const wxSize& size = wxDefaultSize,
                      long style = wxDEFAULT_FRAME_STYLE | wxVSCROLL | wxHSCROLL,
-                     const wxString& name = wxASCII_STR(wxFrameNameStr))
+                     std::string_view name = wxFrameNameStr)
     {
         Create(parent, id, title, pos, size, style, name);
     }
@@ -44,7 +44,7 @@ public:
                 const wxPoint& pos = wxDefaultPosition,
                 const wxSize& size = wxDefaultSize,
                 long style = wxDEFAULT_FRAME_STYLE | wxVSCROLL | wxHSCROLL,
-                const wxString& name = wxASCII_STR(wxFrameNameStr));
+                std::string_view name = wxFrameNameStr);
 
     // override/implement base class [pure] virtual methods
     // ----------------------------------------------------
@@ -180,7 +180,7 @@ public:
                     const wxPoint& pos = wxDefaultPosition,
                     const wxSize& size = wxDefaultSize,
                     long style = wxDEFAULT_FRAME_STYLE,
-                    const wxString& name = wxASCII_STR(wxFrameNameStr))
+                    std::string_view name = wxFrameNameStr)
     {
         Create(parent, id, title, pos, size, style, name);
     }
@@ -196,7 +196,7 @@ wxMDIChildFrame(const wxMDIChildFrame&) = delete;
                 const wxPoint& pos = wxDefaultPosition,
                 const wxSize& size = wxDefaultSize,
                 long style = wxDEFAULT_FRAME_STYLE,
-                const wxString& name = wxASCII_STR(wxFrameNameStr));
+                std::string_view name = wxFrameNameStr);
 
     ~wxMDIChildFrame() override;
 

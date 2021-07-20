@@ -38,7 +38,7 @@ wxObject *wxScrollBarXmlHandler::DoCreateResource()
                     GetPosition(), GetSize(),
                     GetStyle(),
                     wxDefaultValidator,
-                    GetName());
+                    std::string(GetName()));
 
     control->SetScrollbar(GetLong( wxT("value"), 0),
                           GetLong( wxT("thumbsize"),1),

@@ -330,7 +330,7 @@ void wxHtmlWindow::Init()
 
 bool wxHtmlWindow::Create(wxWindow *parent, wxWindowID id,
                           const wxPoint& pos, const wxSize& size,
-                          long style, const wxString& name)
+                          long style, std::string_view name)
 {
     if (!wxScrolledWindow::Create(parent, id, pos, size,
                                   style | wxVSCROLL | wxHSCROLL,

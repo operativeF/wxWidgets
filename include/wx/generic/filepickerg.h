@@ -39,7 +39,7 @@ public:
                            const wxSize& size = wxDefaultSize,
                            long style = 0,
                            const wxValidator& validator = wxDefaultValidator,
-                           const wxString& name = wxASCII_STR(wxFilePickerWidgetNameStr))
+                           std::string_view name = wxFilePickerWidgetNameStr)
     {
          m_pickerStyle = -1; 
         Create(parent, id, label, path, message, wildcard,
@@ -70,7 +70,7 @@ public:
            const wxSize& size = wxDefaultSize,
            long style = 0,
            const wxValidator& validator = wxDefaultValidator,
-           const wxString& name = wxASCII_STR(wxFilePickerWidgetNameStr));
+           std::string_view name = wxFilePickerWidgetNameStr);
 
     // event handler for the click
     void OnButtonClick(wxCommandEvent &);
@@ -112,7 +112,7 @@ public:
                         const wxSize& size = wxDefaultSize,
                         long style = wxFILEBTN_DEFAULT_STYLE,
                         const wxValidator& validator = wxDefaultValidator,
-                        const wxString& name = wxASCII_STR(wxFilePickerWidgetNameStr))
+                        std::string_view name = wxFilePickerWidgetNameStr)
     {
         Create(parent, id, label, path, message, wildcard,
                pos, size, style, validator, name);
@@ -179,7 +179,7 @@ public:
                        const wxSize& size = wxDefaultSize,
                        long style = wxDIRBTN_DEFAULT_STYLE,
                        const wxValidator& validator = wxDefaultValidator,
-                       const wxString& name = wxASCII_STR(wxDirPickerWidgetNameStr))
+                       std::string_view name = wxDirPickerWidgetNameStr)
     {
         Create(parent, id, label, path, message, wxEmptyString,
                pos, size, style, validator, name);

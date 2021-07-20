@@ -65,7 +65,7 @@ wxObject *wxEditableListBoxXmlHandler::DoCreateResource()
                       GetPosition(),
                       GetSize(),
                       GetStyle(),
-                      GetName()
+                      std::string(GetName())
                  );
 
         SetupWindow(control);

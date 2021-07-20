@@ -144,7 +144,7 @@ bool wxMDIParentFrame::Create(wxWindow *parent,
                               const wxPoint& pos,
                               const wxSize& size,
                               long style,
-                              const wxString& name)
+                              std::string_view name)
 {
   // this style can be used to prevent a window from having the standard MDI
   // "Window" menu
@@ -165,7 +165,7 @@ bool wxMDIParentFrame::Create(wxWindow *parent,
   if (!parent)
     wxTopLevelWindows.Append(this);
 
-  SetName(name);
+  SetName(std::string(name));
   m_windowStyle = style;
 
   if ( parent )
@@ -787,11 +787,11 @@ bool wxMDIChildFrame::Create(wxMDIParentFrame *parent,
                              const wxPoint& pos,
                              const wxSize& size,
                              long style,
-                             const wxString& name)
+                             std::string_view name)
 {
     m_mdiParent = parent;
 
-  SetName(name);
+  SetName(std::string(name));
 
   if ( id != wxID_ANY )
     m_windowId = id;

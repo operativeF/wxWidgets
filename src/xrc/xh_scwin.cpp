@@ -43,7 +43,7 @@ wxObject *wxScrolledWindowXmlHandler::DoCreateResource()
                     GetID(),
                     GetPosition(), GetSize(),
                     GetStyle(wxT("style"), wxHSCROLL | wxVSCROLL),
-                    GetName());
+                    std::string(GetName()));
 
     SetupWindow(control);
     CreateChildren(control);

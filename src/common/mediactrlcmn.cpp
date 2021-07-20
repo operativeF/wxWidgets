@@ -76,7 +76,7 @@ bool wxMediaCtrl::Create(wxWindow* parent, wxWindowID id,
                 long style,
                 const wxString& szBackend,
                 const wxValidator& validator,
-                const wxString& name)
+                std::string_view name)
 {
     if(!szBackend.empty())
     {
@@ -142,7 +142,7 @@ bool wxMediaCtrl::Create(wxWindow* parent, wxWindowID id,
                          long style,
                          const wxString& szBackend,
                          const wxValidator& validator,
-                         const wxString& name)
+                         std::string_view name)
 {
     if(!szBackend.empty())
     {
@@ -200,7 +200,7 @@ bool wxMediaCtrl::DoCreate(const wxClassInfo* classInfo,
                             const wxSize& size,
                             long style,
                             const wxValidator& validator,
-                            const wxString& name)
+                            std::string_view name)
 {
     m_imp = (wxMediaBackend*)classInfo->CreateObject();
 

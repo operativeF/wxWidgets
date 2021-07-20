@@ -54,7 +54,7 @@ wxObject *wxDialogXmlHandler::DoCreateResource()
                 GetText(wxT("title")),
                 wxDefaultPosition, wxDefaultSize,
                 GetStyle(wxT("style"), wxDEFAULT_DIALOG_STYLE),
-                GetName());
+                std::string(GetName()));
 
     if (HasParam(wxT("size")))
         dlg->SetClientSize(GetSize(wxT("size"), dlg));

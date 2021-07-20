@@ -239,7 +239,7 @@ wxWebView* wxWebView::New(const wxString& backend)
 wxWebView* wxWebView::New(wxWindow* parent, wxWindowID id, const wxString& url,
                           const wxPoint& pos, const wxSize& size,
                           const wxString& backend, long style,
-                          const wxString& name)
+                          std::string_view name)
 {
     wxStringWebViewFactoryMap::iterator iter = FindFactory(backend);
 

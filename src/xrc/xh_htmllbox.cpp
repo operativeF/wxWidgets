@@ -50,7 +50,7 @@ wxObject *wxSimpleHtmlListBoxXmlHandler::DoCreateResource()
                         strList,
                         GetStyle(wxT("style"), wxHLB_DEFAULT_STYLE),
                         wxDefaultValidator,
-                        GetName());
+                        std::string(GetName()));
 
         if (selection != -1)
             control->SetSelection(selection);

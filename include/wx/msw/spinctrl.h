@@ -39,7 +39,7 @@ public:
                const wxSize& size = wxDefaultSize,
                long style = wxSP_ARROW_KEYS,
                int min = 0, int max = 100, int initial = 0,
-               const wxString& name = wxT("wxSpinCtrl"))
+               std::string_view name = "wxSpinCtrl")
     {
         Create(parent, id, value, pos, size, style, min, max, initial, name);
     }
@@ -58,7 +58,7 @@ public:
                 const wxSize& size = wxDefaultSize,
                 long style = wxSP_ARROW_KEYS,
                 int min = 0, int max = 100, int initial = 0,
-                const wxString& name = wxT("wxSpinCtrl"));
+                std::string_view name = "wxSpinCtrl");
 
     // a wxTextCtrl-like method (but we can't have GetValue returning wxString
     // because the base class already has one returning int!)

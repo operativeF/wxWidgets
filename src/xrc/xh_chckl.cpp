@@ -56,7 +56,7 @@ wxObject *wxCheckListBoxXmlHandler::DoCreateResource()
                         strList,
                         GetStyle(),
                         wxDefaultValidator,
-                        GetName());
+                        std::string(GetName()));
 
         // step through children myself (again.)
         wxXmlNode *n = GetParamNode(wxT("content"));

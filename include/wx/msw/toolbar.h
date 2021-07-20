@@ -36,7 +36,7 @@ public:
                 const wxPoint& pos = wxDefaultPosition,
                 const wxSize& size = wxDefaultSize,
                 long style = wxTB_DEFAULT_STYLE,
-                const wxString& name = wxASCII_STR(wxToolBarNameStr))
+                std::string_view name = wxToolBarNameStr)
     {
         m_defaultWidth = 16;
         m_defaultHeight = 15;
@@ -54,7 +54,7 @@ public:
                 const wxPoint& pos = wxDefaultPosition,
                 const wxSize& size = wxDefaultSize,
                 long style = wxTB_DEFAULT_STYLE,
-                const wxString& name = wxASCII_STR(wxToolBarNameStr));
+                std::string_view name = wxToolBarNameStr);
 
     ~wxToolBar() override;
 

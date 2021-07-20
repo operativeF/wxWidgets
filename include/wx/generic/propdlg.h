@@ -89,7 +89,7 @@ public:
                        const wxPoint& pos = wxDefaultPosition,
                        const wxSize& sz = wxDefaultSize,
                        long style = wxDEFAULT_DIALOG_STYLE,
-                       const wxString& name = wxASCII_STR(wxDialogNameStr))
+                       std::string_view name = wxDialogNameStr)
     {
         
     m_sheetStyle = wxPROPSHEET_DEFAULT;
@@ -106,7 +106,7 @@ public:
                        const wxPoint& pos = wxDefaultPosition,
                        const wxSize& sz = wxDefaultSize,
                        long style = wxDEFAULT_DIALOG_STYLE,
-                       const wxString& name = wxASCII_STR(wxDialogNameStr));
+                       std::string_view name = wxDialogNameStr);
 
 //// Accessors
 

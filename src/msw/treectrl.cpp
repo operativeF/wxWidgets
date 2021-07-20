@@ -683,7 +683,7 @@ bool wxTreeCtrl::Create(wxWindow *parent,
                         const wxSize& size,
                         long style,
                         const wxValidator& validator,
-                        const wxString& name)
+                        std::string_view name)
 {
     
     m_textCtrl = nullptr;

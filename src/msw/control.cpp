@@ -54,9 +54,9 @@ bool wxControl::Create(wxWindow *parent,
                        const wxSize& size,
                        long style,
                        const wxValidator& wxVALIDATOR_PARAM(validator),
-                       const std::string& name)
+                       std::string_view name)
 {
-    if ( !wxWindow::Create(parent, id, pos, size, style, wxString(name)) )
+    if ( !wxWindow::Create(parent, id, pos, size, style, name) )
         return false;
 
 #if wxUSE_VALIDATORS

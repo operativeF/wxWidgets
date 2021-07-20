@@ -55,7 +55,7 @@ wxObject *wxRadioBoxXmlHandler::DoCreateResource()
                         GetLong(wxT("dimension"), 1),
                         GetStyle(),
                         wxDefaultValidator,
-                        GetName());
+                        std::string(GetName()));
 
         if (selection != -1)
             control->SetSelection(selection);

@@ -353,7 +353,7 @@ public:
                                      const wxSize& size,
                                      long style,
                                      const wxValidator& validator,
-                                     const wxString& name) override;
+                                     std::string_view name) override;
 
     bool Play() override;
     bool Pause() override;
@@ -627,7 +627,7 @@ bool wxQTMediaBackend::CreateControl(wxControl* ctrl, wxWindow* parent,
                                      const wxSize& size,
                                      long style,
                                      const wxValidator& validator,
-                                     const wxString& name)
+                                     std::string_view name)
 {
     if (!m_lib.Initialize())
         return false;
@@ -649,7 +649,7 @@ bool wxQTMediaBackend::CreateControl(wxControl* ctrl, wxWindow* parent,
     // backends, we don't need wxCLIP_CHILDREN
     if ( !ctrl->wxControl::Create(parent, id, pos, size,
                             (style & ~wxBORDER_MASK) | wxBORDER_NONE,
-                            validator, name.ToStdString()) )
+                            validator, name) )
     {
         return false;
     }

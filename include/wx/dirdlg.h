@@ -58,7 +58,7 @@ public:
                     long style = wxDD_DEFAULT_STYLE,
                     const wxPoint& pos = wxDefaultPosition,
                     const wxSize& sz = wxDefaultSize,
-                    const wxString& name = wxASCII_STR(wxDirDialogNameStr))
+                    std::string_view name = wxDirDialogNameStr)
     {
         Create(parent, title, defaultPath, style, pos, sz, name);
     }
@@ -72,7 +72,7 @@ public:
                 long style = wxDD_DEFAULT_STYLE,
                 const wxPoint& pos = wxDefaultPosition,
                 const wxSize& sz = wxDefaultSize,
-                const wxString& name = wxASCII_STR(wxDirDialogNameStr))
+                std::string_view name = wxDirDialogNameStr)
     {
         if (!wxDialog::Create(parent, wxID_ANY, title, pos, sz, style, name))
             return false;

@@ -84,7 +84,7 @@ public:
                      long style = wxFD_DEFAULT_STYLE,
                      const wxPoint& pos = wxDefaultPosition,
                      const wxSize& sz = wxDefaultSize,
-                     const wxString& name = wxASCII_STR(wxFileDialogNameStr))
+                     std::string_view name = wxFileDialogNameStr)
     {
         m_windowStyle = 0;
 
@@ -107,7 +107,7 @@ public:
                 long style = wxFD_DEFAULT_STYLE,
                 const wxPoint& pos = wxDefaultPosition,
                 const wxSize& sz = wxDefaultSize,
-                const wxString& name = wxASCII_STR(wxFileDialogNameStr));
+                std::string_view name = wxFileDialogNameStr);
 
     bool HasFdFlag(int flag) const { return HasFlag(flag); }
 

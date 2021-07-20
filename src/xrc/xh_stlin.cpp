@@ -34,7 +34,7 @@ wxObject *wxStaticLineXmlHandler::DoCreateResource()
                 GetID(),
                 GetPosition(), GetSize(),
                 GetStyle(wxT("style"), wxLI_HORIZONTAL),
-                GetName());
+                std::string(GetName()));
 
     SetupWindow(line);
 

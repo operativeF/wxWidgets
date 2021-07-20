@@ -31,7 +31,7 @@ wxObject *wxActivityIndicatorXmlHandler::DoCreateResource()
                  GetID(),
                  GetPosition(), GetSize(),
                  GetStyle(),
-                 GetName());
+                 std::string(GetName()));
 
     SetupWindow(ctrl);
 

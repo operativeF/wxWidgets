@@ -135,7 +135,7 @@ public:
                    const wxPoint& pos = wxDefaultPosition,
                    const wxSize& size = wxDefaultSize,
                    long style = wxTL_DEFAULT_STYLE,
-                   const wxString& name = wxASCII_STR(wxTreeListCtrlNameStr))
+                   std::string_view name = wxTreeListCtrlNameStr)
     {
         Create(parent, id, pos, size, style, name);
     }
@@ -150,7 +150,7 @@ public:
                 const wxPoint& pos = wxDefaultPosition,
                 const wxSize& size = wxDefaultSize,
                 long style = wxTL_DEFAULT_STYLE,
-                const wxString& name = wxASCII_STR(wxTreeListCtrlNameStr));
+                std::string_view name = wxTreeListCtrlNameStr);
 
 
     ~wxTreeListCtrl() override;

@@ -24,7 +24,7 @@ public:
                 const wxPoint& pos = wxDefaultPosition,
                 const wxSize& size = wxDefaultSize,
                 long style = 0,
-                const wxString& name = wxASCII_STR(wxStaticBoxNameStr))
+                std::string_view name = wxStaticBoxNameStr)
          
     {
         Create(parent, id, label, pos, size, style, name);
@@ -35,7 +35,7 @@ public:
                 const wxPoint& pos = wxDefaultPosition,
                 const wxSize& size = wxDefaultSize,
                 long style = 0,
-                const wxString &name = wxASCII_STR(wxStaticBoxNameStr))
+                std::string_view name = wxStaticBoxNameStr)
          
     {
         Create(parent, id, label, pos, size, style, name);
@@ -51,14 +51,14 @@ public:
                 const wxPoint& pos = wxDefaultPosition,
                 const wxSize& size = wxDefaultSize,
                 long style = 0,
-                const wxString& name = wxASCII_STR(wxStaticBoxNameStr));
+                std::string_view name = wxStaticBoxNameStr);
 
     [[maybe_unused]] bool Create(wxWindow *parent, wxWindowID id,
                 wxWindow* label,
                 const wxPoint& pos = wxDefaultPosition,
                 const wxSize& size = wxDefaultSize,
                 long style = 0,
-                const wxString& name = wxASCII_STR(wxStaticBoxNameStr));
+                std::string_view name = wxStaticBoxNameStr);
 
     /// Implementation only
     void GetBordersForSizer(int *borderTop, int *borderOther) const override;

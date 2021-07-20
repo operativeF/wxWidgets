@@ -35,7 +35,7 @@ public:
             const std::vector<wxString>& choices = {},
             long style = 0,
             const wxValidator& validator = wxDefaultValidator,
-            const wxString& name = wxASCII_STR(wxListBoxNameStr))
+            std::string_view name = wxListBoxNameStr)
     {
         Create(parent, id, pos, size, choices, style, validator, name);
     }
@@ -46,7 +46,7 @@ public:
                 const std::vector<wxString>& choices = {},
                 long style = 0,
                 const wxValidator& validator = wxDefaultValidator,
-                const wxString& name = wxASCII_STR(wxListBoxNameStr));
+                std::string_view name = wxListBoxNameStr);
 
     ~wxListBox() override;
 

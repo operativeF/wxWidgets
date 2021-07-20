@@ -46,7 +46,7 @@ wxObject *wxSplitterWindowXmlHandler::DoCreateResource()
                      GetID(),
                      GetPosition(), GetSize(),
                      GetStyle(wxT("style"), wxSP_3D),
-                     GetName());
+                     std::string(GetName()));
 
     SetupWindow(splitter);
 

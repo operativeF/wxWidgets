@@ -354,7 +354,7 @@ wxSizer*  wxSizerXmlHandler::Handle_wxStaticBoxSizer()
                               wndLabel,
                               wxDefaultPosition, wxDefaultSize,
                               0/*style*/,
-                              GetName());
+                              std::string(GetName()));
 #else // !wxHAS_WINDOW_LABEL_IN_STATIC_BOX
         ReportError("Support for using windows as wxStaticBox labels is "
                     "missing in this build of wxWidgets.");
@@ -368,7 +368,7 @@ wxSizer*  wxSizerXmlHandler::Handle_wxStaticBoxSizer()
                               labelText,
                               wxDefaultPosition, wxDefaultSize,
                               0/*style*/,
-                              GetName());
+                              std::string(GetName()));
     }
 
     return new wxStaticBoxSizer(box, GetStyle(wxS("orient"), wxHORIZONTAL));
