@@ -24,22 +24,22 @@ public:
 
     wxTopLevelWindowMSW(wxWindow *parent,
                         wxWindowID id,
-                        const wxString& title,
+                        const std::string& title,
                         const wxPoint& pos = wxDefaultPosition,
                         const wxSize& size = wxDefaultSize,
                         long style = wxDEFAULT_FRAME_STYLE,
-                        const wxString& name = wxASCII_STR(wxFrameNameStr))
+                        const std::string& name = wxASCII_STR(wxFrameNameStr))
     {
         Create(parent, id, title, pos, size, style, name);
     }
 
     [[maybe_unused]] bool Create(wxWindow *parent,
                 wxWindowID id,
-                const wxString& title,
+                const std::string& title,
                 const wxPoint& pos = wxDefaultPosition,
                 const wxSize& size = wxDefaultSize,
                 long style = wxDEFAULT_FRAME_STYLE,
-                const wxString& name = wxASCII_STR(wxFrameNameStr));
+                const std::string& name = wxASCII_STR(wxFrameNameStr));
 
     ~wxTopLevelWindowMSW() override;
 
@@ -48,8 +48,8 @@ public:
     wxTopLevelWindowMSW(wxTopLevelWindowMSW&&) = default;
     wxTopLevelWindowMSW& operator=(wxTopLevelWindowMSW&&) = default;
     
-    void SetTitle( const wxString& title) override;
-    wxString GetTitle() const override;
+    void SetTitle( const std::string& title) override;
+    std::string GetTitle() const override;
     void Maximize(bool maximize = true) override;
     bool IsMaximized() const override;
     void Iconize(bool iconize = true) override;
@@ -126,14 +126,14 @@ public:
 
 protected:
     // create a new frame, return false if it couldn't be created
-    bool CreateFrame(const wxString& title,
+    bool CreateFrame(const std::string& title,
                      const wxPoint& pos,
                      const wxSize& size);
 
     // create a new dialog using the given dialog template from resources,
     // return false if it couldn't be created
     bool CreateDialog(const void *dlgTemplate,
-                      const wxString& title,
+                      const std::string& title,
                       const wxPoint& pos,
                       const wxSize& size);
 

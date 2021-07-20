@@ -94,7 +94,7 @@ bool wxWebViewIE::Create(wxWindow* parent,
            const wxString& name)
 {
     if (!wxControl::Create(parent, id, pos, size, style,
-                           wxDefaultValidator, name))
+                           wxDefaultValidator, name.ToStdString()))
     {
         return false;
     }

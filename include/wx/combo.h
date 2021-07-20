@@ -160,12 +160,12 @@ public:
 
     [[maybe_unused]] bool Create(wxWindow *parent,
                 wxWindowID id,
-                const wxString& value,
+                const std::string& value,
                 const wxPoint& pos,
                 const wxSize& size,
                 long style,
                 const wxValidator& validator,
-                const wxString& name);
+                const std::string& name);
 
     ~wxComboCtrlBase() override;
 

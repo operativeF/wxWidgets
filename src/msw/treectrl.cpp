@@ -738,7 +738,7 @@ bool wxTreeCtrl::Create(wxWindow *parent,
 #endif
 
     // Create the tree control.
-    if ( !MSWCreateControl(WC_TREEVIEW, wstyle, pos, size) )
+    if ( !MSWCreateControl(WC_TREEVIEWW, wstyle, pos, size) )
         return false;
 
     SetBackgroundColour(wxSystemSettings::GetColour(wxSYS_COLOUR_WINDOW));

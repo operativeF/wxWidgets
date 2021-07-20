@@ -1668,7 +1668,7 @@ public:
             int indent = 0;
             wxBitmap ib = m_win->CreateItemBitmap( m_row, indent );
             m_dist_x -= indent;
-            m_hint = new wxFrame( m_win->GetParent(), wxID_ANY, wxEmptyString,
+            m_hint = new wxFrame( m_win->GetParent(), wxID_ANY, "",
                                         wxPoint(pos.x - m_dist_x, pos.y + 5 ),
                                         ib.GetSize(),
                                         wxFRAME_TOOL_WINDOW |
@@ -2031,7 +2031,7 @@ wxDataViewMainWindow::wxDataViewMainWindow( wxDataViewCtrl *parent, wxWindowID i
     (
       wxApp::GetRegisteredClassName
              (
-                  wxT("wxDataView"),
+                  "wxDataView",
                   -1, // no specific background brush
                   0, // no special styles neither
                   wxApp::RegClass_OnlyNR
@@ -5544,7 +5544,7 @@ bool wxDataViewCtrl::Create(wxWindow *parent,
     Init();
 
     if (!wxControl::Create( parent, id, pos, size,
-                            style | wxScrolledWindowStyle, validator, name))
+                            style | wxScrolledWindowStyle, validator, name.ToStdString()))
         return false;
 
     SetInitialSize(size);

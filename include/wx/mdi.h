@@ -249,8 +249,8 @@ public:
     void SetIcons(const wxIconBundle& WXUNUSED(icons)) override { }
 
     // title is used as the tab label
-    wxString GetTitle() const override { return m_title; }
-    void SetTitle(const wxString& title) override = 0;
+    std::string GetTitle() const override { return m_title; }
+    void SetTitle(const std::string& title) override = 0;
 
     // no maximize etc
     void Maximize(bool WXUNUSED(maximize) = true) override { }
@@ -328,7 +328,7 @@ protected:
                         int WXUNUSED(maxW), int WXUNUSED(maxH),
                         int WXUNUSED(incW), int WXUNUSED(incH)) override { }
 
-    wxString m_title;
+    std::string m_title;
 };
 
 // ----------------------------------------------------------------------------

@@ -156,7 +156,7 @@ bool wxGenericCalendarCtrl::Create(wxWindow *parent,
 {
     if ( !wxControl::Create(parent, id, pos, size,
                             style | wxCLIP_CHILDREN | wxWANTS_CHARS | wxFULL_REPAINT_ON_RESIZE,
-                            wxDefaultValidator, name) )
+                            wxDefaultValidator, name.ToStdString()) )
     {
         return false;
     }

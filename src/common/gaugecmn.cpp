@@ -114,7 +114,7 @@ bool wxGaugeBase::Create(wxWindow *parent,
                          const wxValidator& validator,
                          const wxString& name)
 {
-    if ( !wxControl::Create(parent, id, pos, size, style, validator, name) )
+    if ( !wxControl::Create(parent, id, pos, size, style, validator, name.ToStdString()) )
         return false;
 
     SetName(name);

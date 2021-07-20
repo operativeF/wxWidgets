@@ -249,7 +249,7 @@ bool wxRichTextCtrl::Create( wxWindow* parent, wxWindowID id, const wxString& va
 
     if (!wxControl::Create(parent, id, pos, size,
                            style|wxFULL_REPAINT_ON_RESIZE,
-                           validator, name))
+                           validator, name.ToStdString()))
         return false;
 
     if (!GetFont().IsOk())

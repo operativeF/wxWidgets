@@ -49,7 +49,7 @@ bool wxPickerBase::CreateBase(wxWindow *parent,
     style &= ~wxBORDER_MASK;
 
     if (!wxControl::Create(parent, id, pos, size, style | wxNO_BORDER | wxTAB_TRAVERSAL,
-                           validator, name))
+                           validator, name.ToStdString()))
         return false;
 
     SetMinSize( size );

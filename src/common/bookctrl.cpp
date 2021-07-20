@@ -47,7 +47,7 @@ wxBookCtrlBase::Create(wxWindow *parent,
                        const wxPoint& pos,
                        const wxSize& size,
                        long style,
-                       const wxString& name)
+                       const std::string& name)
 {
     return wxControl::Create
                      (
@@ -335,7 +335,7 @@ void wxBookCtrlBase::OnHelp(wxHelpEvent& event)
 bool
 wxBookCtrlBase::InsertPage(size_t nPage,
                            wxWindow *page,
-                           const wxString& WXUNUSED(text),
+                           const std::string& WXUNUSED(text),
                            bool WXUNUSED(bSelect),
                            int WXUNUSED(imageId))
 {

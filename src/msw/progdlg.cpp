@@ -364,8 +364,8 @@ void PerformNotificationUpdates(HWND hwnd,
 // wxProgressDialog implementation
 // ============================================================================
 
-wxProgressDialog::wxProgressDialog( const wxString& title,
-                                    const wxString& message,
+wxProgressDialog::wxProgressDialog( const std::string& title,
+                                    const std::string& message,
                                     int maximum,
                                     wxWindow *parent,
                                     int style )
@@ -731,7 +731,7 @@ bool wxProgressDialog::WasCancelled() const
     return wxGenericProgressDialog::WasCancelled();
 }
 
-void wxProgressDialog::SetTitle(const wxString& title)
+void wxProgressDialog::SetTitle(const std::string& title)
 {
 #ifdef wxHAS_MSW_TASKDIALOG
     if ( HasNativeTaskDialog() )
@@ -750,7 +750,7 @@ void wxProgressDialog::SetTitle(const wxString& title)
     wxGenericProgressDialog::SetTitle(title);
 }
 
-wxString wxProgressDialog::GetTitle() const
+std::string wxProgressDialog::GetTitle() const
 {
 #ifdef wxHAS_MSW_TASKDIALOG
     if ( HasNativeTaskDialog() )

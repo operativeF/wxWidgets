@@ -86,7 +86,7 @@ public:
     //
     // the background brush argument must be either a COLOR_XXX standard value
     // or (default) -1 meaning that the class paints its background itself
-    static const wxChar *GetRegisteredClassName(const wxChar *name,
+    static std::string GetRegisteredClassName(const std::string& name,
                                                 int bgBrushCol = -1,
                                                 int extraStyles = 0,
                                                 int flags = RegClass_Default);

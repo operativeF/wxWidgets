@@ -22,7 +22,7 @@ public:
     wxFindReplaceDialog() = default;
     wxFindReplaceDialog(wxWindow *parent,
                         wxFindReplaceData *data,
-                        const wxString &title,
+                        const std::string& title,
                         int style = 0);
 
     wxFindReplaceDialog(const wxFindReplaceDialog&) = delete;
@@ -32,7 +32,7 @@ public:
 
     [[maybe_unused]] bool Create(wxWindow *parent,
                 wxFindReplaceData *data,
-                const wxString &title,
+                const std::string& title,
                 int style = 0);
 
     ~wxFindReplaceDialog() override;
@@ -43,8 +43,8 @@ public:
 
     // override some base class virtuals
     bool Show(bool show = true) override;
-    void SetTitle( const wxString& title) override;
-    wxString GetTitle() const override;
+    void SetTitle( const std::string& title) override;
+    std::string GetTitle() const override;
 
 protected:
     wxSize DoGetSize() const override;
@@ -53,7 +53,7 @@ protected:
                            int width, int height,
                            int sizeFlags = wxSIZE_AUTO) override;
 
-    wxString                m_title;
+    std::string            m_title;
 
     wxFindReplaceDialogImpl *m_impl {nullptr};
 

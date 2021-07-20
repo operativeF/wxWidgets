@@ -16,7 +16,7 @@ struct wxProgressDialogSharedData;
 class WXDLLIMPEXP_CORE wxProgressDialog : public wxGenericProgressDialog
 {
 public:
-    wxProgressDialog(const wxString& title, const wxString& message,
+    wxProgressDialog(const std::string& title, const std::string& message,
                      int maximum = 100,
                      wxWindow *parent = nullptr,
                      int style = wxPD_APP_MODAL | wxPD_AUTO_HIDE);
@@ -43,8 +43,8 @@ public:
     bool WasSkipped() const override;
     bool WasCancelled() const override;
 
-    void SetTitle(const wxString& title) override;
-    wxString GetTitle() const override;
+    void SetTitle(const std::string& title) override;
+    std::string GetTitle() const override;
 
     void SetIcons(const wxIconBundle& icons) override;
     void DoMoveWindow(int x, int y, int width, int height) override;
@@ -84,8 +84,8 @@ private:
 
     // Store the message and title we currently use to be able to return it
     // from Get{Message,Title}()
-    wxString m_message;
-    wxString m_title;
+    std::string m_message;
+    std::string m_title;
 
 public:
 	wxClassInfo *GetClassInfo() const override;

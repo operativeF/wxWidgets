@@ -23,7 +23,7 @@ public:
               const wxPoint& pos = wxDefaultPosition,
               const wxSize& size = wxDefaultSize, long style = 0,
               const wxValidator& validator = wxDefaultValidator,
-              const wxString& name = wxASCII_STR(wxControlNameStr))
+              const std::string& name = wxControlNameStr)
     {
         Create(parent, id, pos, size, style, validator, name);
     }
@@ -37,7 +37,7 @@ public:
             const wxPoint& pos = wxDefaultPosition,
             const wxSize& size = wxDefaultSize, long style = 0,
             const wxValidator& validator = wxDefaultValidator,
-            const wxString& name = wxASCII_STR(wxControlNameStr));
+            const std::string& name = wxControlNameStr);
 
 
     // Simulates an event
@@ -88,8 +88,8 @@ protected:
     // size parameter (style parameter is not needed because m_windowStyle is
     // supposed to had been already set and so is used instead when this
     // function is called)
-    bool MSWCreateControl(const wxChar *classname,
-                          const wxString& label,
+    bool MSWCreateControl(const std::wstring& classname,
+                          const std::string& label,
                           const wxPoint& pos,
                           const wxSize& size);
 
@@ -106,11 +106,11 @@ protected:
     // and, label (the title of the window), of course, is left empty. The
     // extended style is determined from the style and the app 3D settings
     // automatically if it's not specified explicitly.
-    bool MSWCreateControl(const wxChar *classname,
+    bool MSWCreateControl(const std::wstring& classname,
                           WXDWORD style,
                           const wxPoint& pos = wxDefaultPosition,
                           const wxSize& size = wxDefaultSize,
-                          const wxString& label = wxEmptyString,
+                          const std::string& label = "",
                           WXDWORD exstyle = (WXDWORD)-1);
 
     // call this from the derived class MSWControlColor() if you want to show

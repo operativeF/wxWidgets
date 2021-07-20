@@ -244,12 +244,12 @@ bool wxListCtrl::Create(wxWindow *parent,
                         const wxSize& size,
                         long style,
                         const wxValidator& validator,
-                        const wxString& name)
+                        const std::string& name)
 {
     if ( !CreateControl(parent, id, pos, size, style, validator, name) )
         return false;
 
-    if ( !MSWCreateControl(WC_LISTVIEW, wxEmptyString, pos, size) )
+    if ( !MSWCreateControl(WC_LISTVIEWW, "", pos, size) )
         return false;
 
     EnableSystemThemeByDefault();
@@ -957,7 +957,7 @@ bool wxListCtrl::SetItem(wxListItem& info)
     return true;
 }
 
-bool wxListCtrl::SetItem(long index, int col, const wxString& label, int imageId)
+bool wxListCtrl::SetItem(long index, int col, const std::string& label, int imageId)
 {
     wxListItem info;
     info.m_text = label;
@@ -1070,7 +1070,7 @@ bool wxListCtrl::SetItemColumnImage(long item, long column, int image)
 }
 
 // Gets the item text
-wxString wxListCtrl::GetItemText(long item, int col) const
+std::string wxListCtrl::GetItemText(long item, int col) const
 {
     wxListItem info;
 
@@ -1079,12 +1079,12 @@ wxString wxListCtrl::GetItemText(long item, int col) const
     info.m_col = col;
 
     if (!GetItem(info))
-        return wxEmptyString;
+        return "";
     return info.m_text;
 }
 
 // Sets the item text
-void wxListCtrl::SetItemText(long item, const wxString& str)
+void wxListCtrl::SetItemText(long item, const std::string& str)
 {
     wxListItem info;
 
@@ -1471,7 +1471,7 @@ void wxListCtrl::SetImageList(wxImageList *imageList, int which)
         const int n = GetItemCount();
         for( int i = 0; i < n; i++ )
         {
-            wxString text = GetItemText(i);
+            std::string text = GetItemText(i);
             SetItemText(i, text);
         }
     }
@@ -1704,14 +1704,14 @@ bool wxListCtrl::EnsureVisible(long item)
 
 // Find an item whose label matches this string, starting from the item after 'start'
 // or the beginning if 'start' is -1.
-long wxListCtrl::FindItem(long start, const wxString& str, bool partial)
+long wxListCtrl::FindItem(long start, const std::string& str, bool partial)
 {
     LV_FINDINFO findInfo;
 
     findInfo.flags = LVFI_STRING;
     if ( partial )
         findInfo.flags |= LVFI_PARTIAL;
-    findInfo.psz = str.t_str();
+    findInfo.psz = boost::nowide::widen(str).c_str();
 
     // ListView_FindItem() excludes the first item from search and to look
     // through all the items you need to start from -1 which is unnatural and
@@ -1904,7 +1904,7 @@ long wxListCtrl::InsertItem(const wxListItem& info)
     return ListView_InsertItem(GetHwnd(), &item);
 }
 
-long wxListCtrl::InsertItem(long index, const wxString& label)
+long wxListCtrl::InsertItem(long index, const std::string& label)
 {
     wxListItem info;
     info.m_text = label;
@@ -1924,7 +1924,7 @@ long wxListCtrl::InsertItem(long index, int imageIndex)
 }
 
 // Inserts an image/string item
-long wxListCtrl::InsertItem(long index, const wxString& label, int imageIndex)
+long wxListCtrl::InsertItem(long index, const std::string& label, int imageIndex)
 {
     wxListItem info;
     info.m_image = imageIndex == -1 ? I_IMAGENONE : imageIndex;
@@ -2722,8 +2722,8 @@ bool wxListCtrl::MSWOnNotify(int idCtrl, WXLPARAM lParam, WXLPARAM *result)
 
                     if ( lvi.mask & LVIF_TEXT )
                     {
-                        wxString text = OnGetItemText(item, lvi.iSubItem);
-                        wxStrlcpy(lvi.pszText, text.c_str(), lvi.cchTextMax);
+                        std::string text = OnGetItemText(item, lvi.iSubItem);
+                        wxStrlcpy(lvi.pszText, boost::nowide::widen(text).c_str(), lvi.cchTextMax);
                     }
 
                     if ( lvi.mask & LVIF_IMAGE )

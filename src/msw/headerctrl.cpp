@@ -83,7 +83,7 @@ public:
                 const wxPoint& pos,
                 const wxSize& size,
                 long style,
-                const wxString& name);
+                const std::string& name);
 
     ~wxMSWHeaderCtrl() override;
 
@@ -208,7 +208,7 @@ bool wxMSWHeaderCtrl::Create(wxWindow *parent,
                              const wxPoint& pos,
                              const wxSize& size,
                              long style,
-                             const wxString& name)
+                             const std::string& name)
 {
     // notice that we don't need InitCommonControlsEx(ICC_LISTVIEW_CLASSES)
     // here as we already call InitCommonControls() in wxApp initialization
@@ -217,7 +217,7 @@ bool wxMSWHeaderCtrl::Create(wxWindow *parent,
     if ( !CreateControl(parent, id, pos, size, style, wxDefaultValidator, name) )
         return false;
 
-    if ( !MSWCreateControl(WC_HEADER, wxT(""), pos, size) )
+    if ( !MSWCreateControl(WC_HEADERW, "", pos, size) )
         return false;
 
     // special hack for margins when using comctl32.dll v6 or later: the

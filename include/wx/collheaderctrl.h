@@ -54,7 +54,7 @@ public:
         const wxValidator& validator = wxDefaultValidator,
         const wxString& name = wxASCII_STR(wxCollapsibleHeaderCtrlNameStr))
     {
-        if ( !wxControl::Create(parent, id, pos, size, style, validator, name) )
+        if ( !wxControl::Create(parent, id, pos, size, style, validator, name.ToStdString()) )
             return false;
 
         SetLabel(label);

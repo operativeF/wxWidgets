@@ -59,7 +59,7 @@ bool wxGenericCollapsiblePane::Create(wxWindow *parent,
                                       const wxValidator& val,
                                       const wxString& name)
 {
-    if ( !wxControl::Create(parent, id, pos, size, style, val, name) )
+    if ( !wxControl::Create(parent, id, pos, size, style, val, name.ToStdString()) )
         return false;
 
     // sizer containing the expand button and possibly a static line

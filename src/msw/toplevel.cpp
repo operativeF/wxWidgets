@@ -37,6 +37,8 @@
 
 #include "wx/display.h"
 
+#include <boost/nowide/convert.hpp>
+
 // NB: wxDlgProc must be defined here and not in dialog.cpp because the latter
 //     is not included by wxUniv build which does need wxDlgProc
 INT_PTR APIENTRY
@@ -306,7 +308,7 @@ WXLRESULT wxTopLevelWindowMSW::MSWWindowProc(WXUINT message, WXWPARAM wParam, WX
 }
 
 bool wxTopLevelWindowMSW::CreateDialog(const void *dlgTemplate,
-                                       const wxString& title,
+                                       const std::string& title,
                                        const wxPoint& pos,
                                        const wxSize& size)
 {
@@ -341,7 +343,7 @@ bool wxTopLevelWindowMSW::CreateDialog(const void *dlgTemplate,
             wxIcon icon = winTop->GetIcon();
             if ( icon.IsOk() )
             {
-                ::SendMessage(GetHwnd(), WM_SETICON,
+                ::SendMessageW(GetHwnd(), WM_SETICON,
                               (WPARAM)TRUE,
                               (LPARAM)GetHiconOf(icon));
             }
@@ -350,7 +352,7 @@ bool wxTopLevelWindowMSW::CreateDialog(const void *dlgTemplate,
 
     if ( !title.empty() )
     {
-        ::SetWindowText(GetHwnd(), title.t_str());
+        ::SetWindowTextW(GetHwnd(), boost::nowide::widen(title).c_str());
     }
 
     SubclassWin(m_hWnd);
@@ -377,7 +379,7 @@ bool wxTopLevelWindowMSW::CreateDialog(const void *dlgTemplate,
     return true;
 }
 
-bool wxTopLevelWindowMSW::CreateFrame(const wxString& title,
+bool wxTopLevelWindowMSW::CreateFrame(const std::string& title,
                                       const wxPoint& pos,
                                       const wxSize& size)
 {
@@ -389,16 +391,16 @@ bool wxTopLevelWindowMSW::CreateFrame(const wxString& title,
     if ( wxApp::MSWGetDefaultLayout(m_parent) == wxLayoutDirection::RightToLeft )
         exflags |= WS_EX_LAYOUTRTL;
 
-    return MSWCreate(GetMSWClassName(GetWindowStyle()), title.t_str(), pos, sz, flags, exflags);
+    return MSWCreate(GetMSWClassName(GetWindowStyle()), title, pos, sz, flags, exflags);
 }
 
 bool wxTopLevelWindowMSW::Create(wxWindow *parent,
                                  wxWindowID id,
-                                 const wxString& title,
+                                 const std::string& title,
                                  const wxPoint& pos,
                                  const wxSize& size,
                                  long style,
-                                 const wxString& name)
+                                 const std::string& name)
 {
     wxSize sizeReal = size;
     if ( !sizeReal.IsFullySpecified() )
@@ -975,12 +977,12 @@ bool wxTopLevelWindowMSW::ShowFullScreen(bool show, long style)
 // wxTopLevelWindowMSW misc
 // ----------------------------------------------------------------------------
 
-void wxTopLevelWindowMSW::SetTitle( const wxString& title)
+void wxTopLevelWindowMSW::SetTitle( const std::string& title)
 {
     SetLabel(title);
 }
 
-wxString wxTopLevelWindowMSW::GetTitle() const
+std::string wxTopLevelWindowMSW::GetTitle() const
 {
     return GetLabel();
 }

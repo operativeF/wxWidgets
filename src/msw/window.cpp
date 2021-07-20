@@ -107,6 +107,8 @@
     #include "wx/msw/uxtheme.h"
 #endif
 
+#include <boost/nowide/convert.hpp>
+
 #if wxUSE_DYNLIB_CLASS
     #define HAVE_TRACKMOUSEEVENT
 #endif // everything needed for TrackMouseEvent()
@@ -467,11 +469,11 @@ wxWindowMSW::~wxWindowMSW()
 
 }
 
-const wxChar *wxWindowMSW::GetMSWClassName(long style)
+std::string wxWindowMSW::GetMSWClassName(long style)
 {
     return wxApp::GetRegisteredClassName
                   (
-                    wxT("wxWindow"),
+                    "wxWindow",
                     COLOR_BTNFACE,
                     0, // no special extra style
                     (style & wxFULL_REPAINT_ON_RESIZE) ? wxApp::RegClass_Default
@@ -480,13 +482,13 @@ const wxChar *wxWindowMSW::GetMSWClassName(long style)
 }
 
 // real construction (Init() must have been called before!)
-bool wxWindowMSW::CreateUsingMSWClass(const wxChar* classname,
+bool wxWindowMSW::CreateUsingMSWClass(const std::string& classname,
                                       wxWindow *parent,
                                       wxWindowID id,
                                       const wxPoint& pos,
                                       const wxSize& size,
                                       long style,
-                                      const wxString& name)
+                                      const std::string& name)
 {
     wxCHECK_MSG( parent, false, wxT("can't create wxWindow without parent") );
 
@@ -512,7 +514,7 @@ bool wxWindowMSW::CreateUsingMSWClass(const wxChar* classname,
         msflags |= WS_VISIBLE;
     }
 
-    if ( !MSWCreate(classname, nullptr, pos, size, msflags, exstyle) )
+    if ( !MSWCreate(classname, "", pos, size, msflags, exstyle) )
         return false;
 
     InheritAttributes();
@@ -3940,8 +3942,8 @@ WXHWND wxWindowMSW::MSWGetParent() const
     return m_parent ? m_parent->GetHWND() : WXHWND(nullptr);
 }
 
-bool wxWindowMSW::MSWCreate(const wxChar *wclass,
-                            const wxChar *title,
+bool wxWindowMSW::MSWCreate(const std::string& wclass,
+                            const std::string& title,
                             const wxPoint& pos,
                             const wxSize& size,
                             WXDWORD style,
@@ -3955,7 +3957,7 @@ bool wxWindowMSW::MSWCreate(const wxChar *wclass,
 
     // this can happen if this function is called using the return value of
     // wxApp::GetRegisteredClassName() which failed
-    wxCHECK_MSG( wclass, false, "failed to register window class?" );
+    wxCHECK_MSG( wclass.c_str(), false, "failed to register window class?" );
 
 
     // choose the position/size for the new window
@@ -3972,8 +3974,8 @@ bool wxWindowMSW::MSWCreate(const wxChar *wclass,
     m_hWnd = MSWCreateWindowAtAnyPosition
              (
               extendedStyle,
-              wclass,
-              title ? title : m_windowName.t_str(),
+              boost::nowide::widen(wclass),
+              !title.empty() ? title : m_windowName,
               style,
               x, y, w, h,
               MSWGetParent(),
@@ -3990,14 +3992,16 @@ bool wxWindowMSW::MSWCreate(const wxChar *wclass,
     return true;
 }
 
-WXHWND wxWindowMSW::MSWCreateWindowAtAnyPosition(WXDWORD exStyle, const wxChar* clName,
-                                                 const wxChar* title, WXDWORD style,
+WXHWND wxWindowMSW::MSWCreateWindowAtAnyPosition(WXDWORD exStyle, const std::wstring& clName,
+                                                 const std::string& title, WXDWORD style,
                                                  int x, int y, int width, int height,
                                                  WXHWND parent, wxWindowID id)
 {
-    WXHWND hWnd = ::CreateWindowEx(exStyle, clName, title, style, x, y, width, height,
-                                   parent, (HMENU)wxUIntToPtr(id), wxGetInstance(),
-                                   nullptr); // no extra data
+    WXHWND hWnd = ::CreateWindowExW(exStyle, clName.c_str(),
+                                    boost::nowide::widen(title).c_str(),
+                                    style, x, y, width, height,
+                                    parent, (HMENU)wxUIntToPtr(id), wxGetInstance(),
+                                    nullptr); // no extra data
 
     if ( !hWnd )
     {

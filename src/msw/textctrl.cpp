@@ -523,6 +523,7 @@ bool wxTextCtrl::MSWCreateText(const wxString& value,
     // implementation detail
     m_updatesCount = -2;
 
+    // FIXME t_str
     if ( !MSWCreateControl(windowClass.t_str(), msStyle, pos, size, valueWin) )
         return false;
 

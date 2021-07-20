@@ -94,8 +94,8 @@ class WXDLLIMPEXP_AUI wxAuiNotebookPage
 {
 public:
     wxWindow* window;     // page's associated window
-    wxString caption;     // caption displayed on the tab
-    wxString tooltip;     // tooltip displayed when hovering over tab title
+    std::string caption;     // caption displayed on the tab
+    std::string tooltip;     // tooltip displayed when hovering over tab title
     wxBitmap bitmap;      // tab's bitmap
     wxRect rect;          // tab's hit rectangle
     bool active;          // true if the page is currently active
@@ -278,13 +278,13 @@ public:
     virtual void SetTabCtrlHeight(int height);
 
     bool AddPage(wxWindow* page,
-                 const wxString& caption,
+                 const std::string& caption,
                  bool select = false,
                  const wxBitmap& bitmap = wxNullBitmap);
 
     bool InsertPage(size_t pageIdx,
                     wxWindow* page,
-                    const wxString& caption,
+                    const std::string& caption,
                     bool select = false,
                     const wxBitmap& bitmap = wxNullBitmap);
 
@@ -295,11 +295,11 @@ public:
     wxWindow* GetPage(size_t pageIdx) const override;
     int GetPageIndex(wxWindow* pageWnd) const;
 
-    bool SetPageText(size_t page, const wxString& text) override;
-    wxString GetPageText(size_t pageIdx) const override;
+    bool SetPageText(size_t page, const std::string& text) override;
+    std::string GetPageText(size_t pageIdx) const override;
 
-    bool SetPageToolTip(size_t page, const wxString& text);
-    wxString GetPageToolTip(size_t pageIdx) const;
+    bool SetPageToolTip(size_t page, const std::string& text);
+    std::string GetPageToolTip(size_t pageIdx) const;
 
     bool SetPageBitmap(size_t page, const wxBitmap& bitmap);
     wxBitmap GetPageBitmap(size_t pageIdx) const;
@@ -348,10 +348,10 @@ public:
 
     int ChangeSelection(size_t n) override;
 
-    bool AddPage(wxWindow *page, const wxString &text, bool select,
+    bool AddPage(wxWindow *page, const std::string &text, bool select,
                          int imageId) override;
     bool DeleteAllPages() override;
-    bool InsertPage(size_t index, wxWindow *page, const wxString &text,
+    bool InsertPage(size_t index, wxWindow *page, const std::string &text,
                             bool select, int imageId) override;
 
     wxSize DoGetBestSize() const override;

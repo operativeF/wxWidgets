@@ -54,9 +54,9 @@ bool wxControl::Create(wxWindow *parent,
                        const wxSize& size,
                        long style,
                        const wxValidator& wxVALIDATOR_PARAM(validator),
-                       const wxString& name)
+                       const std::string& name)
 {
-    if ( !wxWindow::Create(parent, id, pos, size, style, name) )
+    if ( !wxWindow::Create(parent, id, pos, size, style, wxString(name)) )
         return false;
 
 #if wxUSE_VALIDATORS
@@ -66,8 +66,8 @@ bool wxControl::Create(wxWindow *parent,
     return true;
 }
 
-bool wxControl::MSWCreateControl(const wxChar *classname,
-                                 const wxString& label,
+bool wxControl::MSWCreateControl(const std::wstring& classname,
+                                 const std::string& label,
                                  const wxPoint& pos,
                                  const wxSize& size)
 {
@@ -77,11 +77,11 @@ bool wxControl::MSWCreateControl(const wxChar *classname,
     return MSWCreateControl(classname, msStyle, pos, size, label, exstyle);
 }
 
-bool wxControl::MSWCreateControl(const wxChar *classname,
+bool wxControl::MSWCreateControl(const std::wstring& classname,
                                  WXDWORD style,
                                  const wxPoint& pos,
                                  const wxSize& size,
-                                 const wxString& label,
+                                 const std::string& label,
                                  WXDWORD exstyle)
 {
     // if no extended style given, determine it ourselves
@@ -117,7 +117,7 @@ bool wxControl::MSWCreateControl(const wxChar *classname,
              (
               exstyle,            // extended style
               classname,          // the kind of control to create
-              label.t_str(),      // the window name
+              label,      // the window name
               style,              // the window style
               x, y, w, h,         // the window position and size
               GetHwndOf(GetParent()),         // parent

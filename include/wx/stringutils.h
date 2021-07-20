@@ -75,8 +75,8 @@ template<typename Pred>
     std::string strA;
     std::string strB;
 
-    std::transform(strViewA.begin(), strViewA.end(), strA.begin(), [&strA](char c){ return ::tolower(c); });
-    std::transform(strViewB.begin(), strViewB.end(), strB.begin(), [&strB](char c){ return ::tolower(c); });
+    std::transform(strViewA.begin(), strViewA.end(), strA.begin(), [&strA](auto c){ return ::tolower(c); });
+    std::transform(strViewB.begin(), strViewB.end(), strB.begin(), [&strB](auto c){ return ::tolower(c); });
 
     return strA == strB;
 }

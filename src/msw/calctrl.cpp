@@ -90,11 +90,11 @@ wxCalendarCtrl::Create(wxWindow *parent,
         }
     }
 
-    const wxChar * const clsname = s_clsMonthCal.IsRegistered()
-        ? static_cast<const wxChar*>(s_clsMonthCal.GetName().t_str())
-        : MONTHCAL_CLASS;
+    std::wstring clsname = s_clsMonthCal.IsRegistered()
+        ? boost::nowide::widen(s_clsMonthCal.GetName())
+        : MONTHCAL_CLASSW;
 
-    if ( !MSWCreateControl(clsname, wxEmptyString, pos, size) )
+    if ( !MSWCreateControl(clsname, "", pos, size) )
         return false;
 
     // initialize the control

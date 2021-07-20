@@ -60,6 +60,8 @@
 
 #include "wx/msw/missing.h"
 
+#include <boost/nowide/convert.hpp>
+
 // instead of including <shlwapi.h> which is not part of the core SDK and not
 // shipped at all with other compilers, we always define the parts of it we
 // need here ourselves
@@ -91,7 +93,7 @@ extern void wxSetKeyboardHook(bool doIt);
 // see http://article.gmane.org/gmane.comp.lib.wxwidgets.devel/110282
 struct ClassRegInfo
 {
-    ClassRegInfo(const wxChar *name, int flags)
+    ClassRegInfo(const std::string& name, int flags)
     {
         if ( (flags & wxApp::RegClass_OnlyNR) == wxApp::RegClass_OnlyNR )
         {
@@ -111,14 +113,14 @@ struct ClassRegInfo
 
     // Return the appropriate string depending on the presence of
     // RegClass_ReturnNR bit in the flags.
-    const wxChar* GetRequestedName(int flags) const
+    std::string GetRequestedName(int flags) const
     {
-        return (flags & wxApp::RegClass_ReturnNR ? regnameNR : regname).t_str();
+        return flags & wxApp::RegClass_ReturnNR ? regnameNR : regname;
     }
 
     // the name of the registered class with and without CS_[HV]REDRAW styles
-    wxString regname;
-    wxString regnameNR;
+    std::string regname;
+    std::string regnameNR;
 };
 
 namespace
@@ -209,7 +211,7 @@ void *wxGUIAppTraits::BeforeChildWaitLoop()
                     (
                         wxTheApp->GetTopWindow(),
                         wxID_ANY,
-                        wxEmptyString,
+                        "",
                         wxPoint(32600, 32600),
                         wxSize(1, 1)
                     );
@@ -632,7 +634,7 @@ bool wxApp::Initialize(int& argc_, wxChar **argv_)
 // ---------------------------------------------------------------------------
 
 /* static */
-const wxChar *wxApp::GetRegisteredClassName(const wxChar *name,
+std::string wxApp::GetRegisteredClassName(const std::string& name,
                                             int bgBrushCol,
                                             int extraStyles,
                                             int flags)
@@ -655,27 +657,30 @@ const wxChar *wxApp::GetRegisteredClassName(const wxChar *name,
     wndclass.hbrBackground = (HBRUSH)wxUIntToPtr(bgBrushCol + 1);
     wndclass.style         = CS_HREDRAW | CS_VREDRAW | CS_DBLCLKS | extraStyles;
 
-
     ClassRegInfo regClass(name, flags);
     if ( !regClass.regname.empty() )
     {
-        wndclass.lpszClassName = regClass.regname.t_str();
-        if ( !::RegisterClass(&wndclass) )
+        auto className = boost::nowide::widen(regClass.regname);
+        wndclass.lpszClassName = className.c_str();
+        if ( !::RegisterClassW(&wndclass) )
         {
             wxLogLastError(wxString::Format(wxT("RegisterClass(%s)"),
                            regClass.regname));
-            return nullptr;
+            return "";
         }
     }
 
+    auto classNameNR = boost::nowide::widen(regClass.regnameNR);
+
     wndclass.style &= ~(CS_HREDRAW | CS_VREDRAW);
-    wndclass.lpszClassName = regClass.regnameNR.t_str();
-    if ( !::RegisterClass(&wndclass) )
+    wndclass.lpszClassName = classNameNR.c_str();
+
+    if ( !::RegisterClassW(&wndclass) )
     {
         wxLogLastError(wxString::Format(wxT("RegisterClass(%s)"),
                        regClass.regname));
-        ::UnregisterClass(regClass.regname.c_str(), wxGetInstance());
-        return nullptr;
+        ::UnregisterClassW(boost::nowide::widen(regClass.regname).c_str(), wxGetInstance());
+        return "";
     }
 
     gs_regClassesInfo.push_back(regClass);
@@ -708,14 +713,14 @@ void wxApp::UnregisterWindowClasses()
         const ClassRegInfo& regClass = gs_regClassesInfo[n];
         if ( !regClass.regname.empty() )
         {
-            if ( !::UnregisterClass(regClass.regname.c_str(), wxGetInstance()) )
+            if ( !::UnregisterClassW(boost::nowide::widen(regClass.regname).c_str(), wxGetInstance()) )
             {
                 wxLogLastError(wxString::Format(wxT("UnregisterClass(%s)"),
                                regClass.regname));
             }
         }
 
-        if ( !::UnregisterClass(regClass.regnameNR.c_str(), wxGetInstance()) )
+        if ( !::UnregisterClassW(boost::nowide::widen(regClass.regnameNR).c_str(), wxGetInstance()) )
         {
             wxLogLastError(wxString::Format(wxT("UnregisterClass(%s)"),
                            regClass.regnameNR));

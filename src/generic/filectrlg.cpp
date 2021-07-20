@@ -891,7 +891,7 @@ bool wxGenericFileCtrl::Create( wxWindow *parent,
                                             pos, size,
                                             wxTAB_TRAVERSAL,
                                             wxDefaultValidator,
-                                            name );
+                                            name.ToStdString() );
 
     m_dir = defaultDirectory;
 

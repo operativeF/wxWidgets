@@ -182,11 +182,11 @@ bool wxMDIParentFrame::Create(wxWindow *parent,
   msflags &= ~WS_HSCROLL;
 
   if ( !wxWindow::MSWCreate(wxApp::GetRegisteredClassName(
-                                    wxT("wxMDIFrame"), -1, 0,
+                                    "wxMDIFrame", -1, 0,
                                     (style & wxFULL_REPAINT_ON_RESIZE) ? wxApp::RegClass_Default
                                                                        : wxApp::RegClass_ReturnNR
                                    ),
-                            title.t_str(),
+                            title,
                             pos, size,
                             msflags,
                             exflags) )
@@ -811,7 +811,7 @@ bool wxMDIChildFrame::Create(wxMDIParentFrame *parent,
   MDICREATESTRUCT mcs;
 
   wxString className = wxApp::GetRegisteredClassName(
-                               wxT("wxMDIChildFrame"), COLOR_WINDOW, 0,
+                               "wxMDIChildFrame", COLOR_WINDOW, 0,
                                (style & wxFULL_REPAINT_ON_RESIZE) ? wxApp::RegClass_Default
                                                                   : wxApp::RegClass_ReturnNR
                               );

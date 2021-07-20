@@ -1039,7 +1039,7 @@ bool wxAMMediaBackend::CreateControl(wxControl* ctrl, wxWindow* parent,
     //
     if ( !ctrl->wxControl::Create(parent, id, pos, size,
                             (style & ~wxBORDER_MASK) | wxBORDER_NONE,
-                            validator, name) )
+                            validator, name.ToStdString()) )
         return false;
 
     //

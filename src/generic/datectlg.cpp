@@ -336,7 +336,7 @@ bool wxDatePickerCtrlGeneric::Create(wxWindow *parent,
 
     if ( !wxControl::Create(parent, id, pos, size,
                             style | wxCLIP_CHILDREN | wxWANTS_CHARS | wxBORDER_NONE,
-                            validator, name) )
+                            validator, name.ToStdString()) )
     {
         return false;
     }

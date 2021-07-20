@@ -98,7 +98,7 @@ bool wxStatusBar::Create(wxWindow *parent,
                         style, wxDefaultValidator, name) )
         return false;
 
-    if ( !MSWCreateControl(STATUSCLASSNAME, wxString(),
+    if ( !MSWCreateControl(STATUSCLASSNAMEW, "",
                            wxDefaultPosition, wxDefaultSize) )
         return false;
 

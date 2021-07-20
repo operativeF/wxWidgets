@@ -186,7 +186,7 @@ bool wxGenericAnimationCtrl::Create(wxWindow *parent, wxWindowID id,
 {
     m_timer.SetOwner(this);
 
-    if (!base_type::Create(parent, id, pos, size, style, wxDefaultValidator, name))
+    if (!base_type::Create(parent, id, pos, size, style, wxDefaultValidator, name.ToStdString()))
         return false;
 
     // by default we get the same background colour of our parent

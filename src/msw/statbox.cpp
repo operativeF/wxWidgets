@@ -78,7 +78,7 @@ bool wxStaticBox::Create(wxWindow *parent,
     if ( !CreateControl(parent, id, pos, size, style, wxDefaultValidator, name) )
         return false;
 
-    if ( !MSWCreateControl(wxT("BUTTON"), label, pos, size) )
+    if ( !MSWCreateControl(L"BUTTON", label, pos, size) )
         return false;
 
     if (!wxSystemOptions::IsFalse(wxT("msw.staticbox.optimized-paint")))

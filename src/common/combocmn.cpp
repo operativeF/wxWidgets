@@ -953,12 +953,12 @@ wxIMPLEMENT_ABSTRACT_CLASS(wxComboCtrlBase, wxControl);
 
 bool wxComboCtrlBase::Create(wxWindow *parent,
                              wxWindowID id,
-                             const wxString& value,
+                             const std::string& value,
                              const wxPoint& pos,
                              const wxSize& size,
                              long style,
                              const wxValidator& validator,
-                             const wxString& name)
+                             const std::string& name)
 {
     if ( !wxControl::Create(parent,
                             id,
@@ -2071,7 +2071,7 @@ void wxComboCtrlBase::CreatePopup()
                                                       wxPoint(-21,-21), wxSize(20, 20),
                                                       tlwFlags );
           #else
-            m_winPopup = new wxComboPopupWindowBase2( this, wxID_ANY, wxEmptyString,
+            m_winPopup = new wxComboPopupWindowBase2( this, wxID_ANY, "",
                                                       wxPoint(-21,-21), wxSize(20, 20),
                                                       tlwFlags );
           #endif

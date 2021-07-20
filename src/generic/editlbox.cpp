@@ -187,7 +187,7 @@ void wxEditableListBox::SetStrings(const std::vector<wxString>& strings)
     for (size_t i = 0; i < strings.size(); i++)
         m_listCtrl->InsertItem(i, strings[i]);
 
-    m_listCtrl->InsertItem(strings.size(), wxEmptyString);
+    m_listCtrl->InsertItem(strings.size(), "");
     m_listCtrl->SetItemState(0, wxLIST_STATE_SELECTED, wxLIST_STATE_SELECTED);
 }
 
@@ -230,7 +230,7 @@ void wxEditableListBox::OnEndLabelEdit(wxListEvent& event)
         // The user edited last (empty) line, i.e. added new entry. We have to
         // add new empty line here so that adding one more line is still
         // possible:
-        m_listCtrl->InsertItem(m_listCtrl->GetItemCount(), wxEmptyString);
+        m_listCtrl->InsertItem(m_listCtrl->GetItemCount(), "");
 
         // Simulate a wxEVT_LIST_ITEM_SELECTED event for the new item,
         // so that the buttons are enabled/disabled properly

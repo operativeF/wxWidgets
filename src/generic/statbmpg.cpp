@@ -31,7 +31,7 @@ bool wxGenericStaticBitmap::Create(wxWindow *parent, wxWindowID id,
                                    long style, const wxString& name)
 {
     if (! wxControl::Create(parent, id, pos, size, style,
-                            wxDefaultValidator, name))
+                            wxDefaultValidator, name.ToStdString()))
         return false;
     m_scaleMode = Scale_None;
     SetBitmap(bitmap);

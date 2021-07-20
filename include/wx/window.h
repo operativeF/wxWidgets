@@ -1714,7 +1714,7 @@ protected:
     // window attributes
     long                 m_windowStyle;
     long                 m_exStyle;
-    wxString             m_windowName;
+    std::string          m_windowName;
     bool                 m_themeEnabled;
     wxBackgroundStyle    m_backgroundStyle;
 #if wxUSE_PALETTE

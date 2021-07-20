@@ -84,7 +84,7 @@ public:
                const wxSize& size = wxDefaultSize,
                long style = wxLC_ICON,
                const wxValidator& validator = wxDefaultValidator,
-               const wxString& name = wxASCII_STR(wxListCtrlNameStr))
+               const std::string& name = wxListCtrlNameStr)
     {
         Create(parent, id, pos, size, style, validator, name);
     }
@@ -102,7 +102,7 @@ public:
                 const wxSize& size = wxDefaultSize,
                 long style = wxLC_ICON,
                 const wxValidator& validator = wxDefaultValidator,
-                const wxString& name = wxASCII_STR(wxListCtrlNameStr));
+                const std::string& name = wxListCtrlNameStr);
 
     // Set the control colours
     bool SetForegroundColour(const wxColour& col) override;
@@ -157,7 +157,7 @@ public:
     bool SetItem(wxListItem& info);
 
     // Sets a string field at a particular column
-    bool SetItem(long index, int col, const wxString& label, int imageId = -1);
+    bool SetItem(long index, int col, const std::string& label, int imageId = -1);
 
     // Gets the item state
     int  GetItemState(long item, long stateMask) const;
@@ -170,10 +170,10 @@ public:
     bool SetItemColumnImage(long item, long column, int image);
 
     // Gets the item text
-    wxString GetItemText(long item, int col = 0) const;
+    std::string GetItemText(long item, int col = 0) const;
 
     // Sets the item text
-    void SetItemText(long item, const wxString& str);
+    void SetItemText(long item, const std::string& str);
 
     // Gets the item data
     wxUIntPtr GetItemData(long item) const;
@@ -286,7 +286,7 @@ public:
 
     // Find an item whose label matches this string, starting from the item after 'start'
     // or the beginning if 'start' is -1.
-    long FindItem(long start, const wxString& str, bool partial = false);
+    long FindItem(long start, const std::string& str, bool partial = false);
 
     // Find an item whose data matches this data, starting from the item after 'start'
     // or the beginning if 'start' is -1.
@@ -306,13 +306,13 @@ public:
     long InsertItem(const wxListItem& info);
 
     // Insert a string item
-    long InsertItem(long index, const wxString& label);
+    long InsertItem(long index, const std::string& label);
 
     // Insert an image item
     long InsertItem(long index, int imageIndex);
 
     // Insert an image/string item
-    long InsertItem(long index, const wxString& label, int imageIndex);
+    long InsertItem(long index, const std::string& label, int imageIndex);
 
     // set the number of items in a virtual list control
     void SetItemCount(long count);

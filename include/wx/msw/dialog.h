@@ -21,11 +21,11 @@ public:
     wxDialog() = default;
 
     wxDialog(wxWindow *parent, wxWindowID id,
-             const wxString& title,
+             const std::string& title,
              const wxPoint& pos = wxDefaultPosition,
              const wxSize& size = wxDefaultSize,
              long style = wxDEFAULT_DIALOG_STYLE,
-             const wxString& name = wxASCII_STR(wxDialogNameStr))
+             const std::string& name = wxDialogNameStr)
     {
         Create(parent, id, title, pos, size, style, name);
     }

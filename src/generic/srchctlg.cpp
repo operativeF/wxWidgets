@@ -304,7 +304,7 @@ bool wxSearchCtrl::Create(wxWindow *parent, wxWindowID id,
             const wxString& name)
 {
     if ( !wxSearchCtrlBaseBaseClass::Create(parent, id, pos, size,
-                                            style, validator, name) )
+                                            style, validator, name.ToStdString()) )
     {
         return false;
     }

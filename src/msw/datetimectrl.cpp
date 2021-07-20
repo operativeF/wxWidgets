@@ -59,7 +59,7 @@ wxDateTimePickerCtrl::MSWCreateDateTimePicker(wxWindow *parent,
         return false;
 
     // create the native control
-    if ( !MSWCreateControl(DATETIMEPICK_CLASS, wxString(), pos, size) )
+    if ( !MSWCreateControl(DATETIMEPICK_CLASSW, "", pos, size) )
         return false;
 
     if ( dt.IsValid() || MSWAllowsNone() )

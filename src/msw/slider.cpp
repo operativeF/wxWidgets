@@ -132,7 +132,7 @@ bool wxSlider::Create(wxWindow *parent,
     }
 
     // now create the main control too
-    if ( !MSWCreateControl(TRACKBAR_CLASS, wxEmptyString, pos, size) )
+    if ( !MSWCreateControl(TRACKBAR_CLASSW, "", pos, size) )
         return false;
 
     if ( m_labels )

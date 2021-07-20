@@ -42,6 +42,8 @@
     #include "wx/msw/uxtheme.h"
 #endif
 
+#include "wx/stringutils.h"
+
 // ----------------------------------------------------------------------------
 // macros
 // ----------------------------------------------------------------------------
@@ -121,7 +123,7 @@ wxNotebook::wxNotebook(wxWindow *parent,
                        const wxPoint& pos,
                        const wxSize& size,
                        long style,
-                       const wxString& name)
+                       const std::string& name)
 {
   Create(parent, id, pos, size, style, name);
 }
@@ -132,7 +134,7 @@ bool wxNotebook::Create(wxWindow *parent,
                         const wxPoint& pos,
                         const wxSize& size,
                         long style,
-                        const wxString& name)
+                        const std::string& name)
 {
     if ( (style & wxBK_ALIGN_MASK) == wxBK_DEFAULT )
     {
@@ -153,7 +155,7 @@ bool wxNotebook::Create(wxWindow *parent,
 #if defined(__WINE__)
     LPCTSTR className = L"SysTabControl32";
 #else
-    LPCTSTR className = WC_TABCONTROL;
+    LPCTSTR className = WC_TABCONTROLW;
 #endif
 
 #if USE_NOTEBOOK_ANTIFLICKER
@@ -168,10 +170,10 @@ bool wxNotebook::Create(wxWindow *parent,
             // get a copy of standard class and modify it
             WNDCLASS wc;
 
-            if ( ::GetClassInfo(nullptr, WC_TABCONTROL, &wc) )
+            if ( ::GetClassInfoW(nullptr, WC_TABCONTROLW, &wc) )
             {
                 gs_wndprocNotebook = wc.lpfnWndProc;
-                wc.lpszClassName = wxT("_wx_SysTabCtl32");
+                wc.lpszClassName = L"_wx_SysTabCtl32";
                 wc.style &= ~(CS_HREDRAW | CS_VREDRAW);
                 wc.hInstance = wxGetInstance();
                 wc.lpfnWndProc = wxNotebookWndProc;
@@ -189,7 +191,7 @@ bool wxNotebook::Create(wxWindow *parent,
         {
             // it's ok to use c_str() here as the static s_clsNotebook object
             // has sufficiently long lifetime
-            className = s_clsNotebook.GetName().c_str();
+            className = boost::nowide::widen(s_clsNotebook.GetName()).c_str();
         }
     }
 #endif // USE_NOTEBOOK_ANTIFLICKER
@@ -198,7 +200,7 @@ bool wxNotebook::Create(wxWindow *parent,
                         wxDefaultValidator, name) )
         return false;
 
-    if ( !MSWCreateControl(className, wxEmptyString, pos, size) )
+    if ( !MSWCreateControl(className, "", pos, size) )
         return false;
 
     // Inherit parent attributes and, unlike the default, also inherit the
@@ -353,13 +355,13 @@ int wxNotebook::ChangeSelection(size_t nPage)
     return selOld;
 }
 
-bool wxNotebook::SetPageText(size_t nPage, const wxString& strText)
+bool wxNotebook::SetPageText(size_t nPage, const std::string& strText)
 {
     wxCHECK_MSG( IS_VALID_PAGE(nPage), false, wxT("notebook page out of range") );
 
     TC_ITEM tcItem;
     tcItem.mask = TCIF_TEXT;
-    tcItem.pszText = wxMSW_CONV_LPTSTR(strText);
+    tcItem.pszText = const_cast<wchar_t*>(boost::nowide::widen(strText).c_str());
 
     if ( !HasFlag(wxNB_MULTILINE) )
         return TabCtrl_SetItem(GetHwnd(), nPage, &tcItem) != 0;
@@ -379,9 +381,9 @@ bool wxNotebook::SetPageText(size_t nPage, const wxString& strText)
     return ret;
 }
 
-wxString wxNotebook::GetPageText(size_t nPage) const
+std::string wxNotebook::GetPageText(size_t nPage) const
 {
-    wxCHECK_MSG( IS_VALID_PAGE(nPage), wxEmptyString, wxT("notebook page out of range") );
+    wxCHECK_MSG( IS_VALID_PAGE(nPage), "", wxT("notebook page out of range") );
 
     wxChar buf[256];
     TC_ITEM tcItem;
@@ -389,11 +391,10 @@ wxString wxNotebook::GetPageText(size_t nPage) const
     tcItem.pszText = buf;
     tcItem.cchTextMax = WXSIZEOF(buf);
 
-    wxString str;
     if ( TabCtrl_GetItem(GetHwnd(), nPage, &tcItem) )
-        str = tcItem.pszText;
+        return boost::nowide::narrow(tcItem.pszText);
 
-    return str;
+    return "";
 }
 
 int wxNotebook::GetPageImage(size_t nPage) const
@@ -600,7 +601,7 @@ bool wxNotebook::DeleteAllPages()
 // same as AddPage() but does it at given position
 bool wxNotebook::InsertPage(size_t nPage,
                             wxNotebookPage *pPage,
-                            const wxString& strText,
+                            const std::string& strText,
                             bool bSelect,
                             int imageId)
 {
@@ -629,7 +630,7 @@ bool wxNotebook::InsertPage(size_t nPage,
     if ( !strText.empty() )
     {
         tcItem.mask |= TCIF_TEXT;
-        tcItem.pszText = wxMSW_CONV_LPTSTR(strText);
+        tcItem.pszText = const_cast<wchar_t*>(boost::nowide::widen(strText).c_str());
     }
 
     // hide the page: unless it is selected, it shouldn't be shown (and if it
@@ -1246,8 +1247,8 @@ wxColour wxNotebook::GetThemeBackgroundColour() const
                 WCHAR szwThemeColor[256];
                 if (S_OK == ::GetCurrentThemeName(szwThemeFile, 1024, szwThemeColor, 256, nullptr, 0))
                 {
-                    wxString themeFile(szwThemeFile);
-                    if (themeFile.Find(wxT("Aero")) != -1 && wxString(szwThemeColor) == wxT("NormalColor"))
+                    std::string themeFile(boost::nowide::narrow(szwThemeFile));
+                    if (themeFile.find("Aero") != -1 && szwThemeColor == L"NormalColor")
                         s_AeroStatus = 1;
                     else
                         s_AeroStatus = 0;

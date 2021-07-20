@@ -409,7 +409,7 @@ bool wxCreateScrolled(T* self,
 inline bool wxCreateScrolled(wxControl* self,
                      wxWindow *parent, wxWindowID winid,
                      const wxPoint& pos, const wxSize& size,
-                     long style, const wxString& name)
+                     long style, const std::string& name)
 {
      return self->Create(parent, winid, pos, size, style, wxDefaultValidator, name);
 }
