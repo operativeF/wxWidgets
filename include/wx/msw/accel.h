@@ -11,7 +11,9 @@
 #ifndef _WX_ACCEL_H_
 #define _WX_ACCEL_H_
 
-#include "gsl/span"
+#include "wx/span.h"
+
+#include <string_view>
 
 class WXDLLIMPEXP_FWD_CORE wxWindow;
 
@@ -26,10 +28,10 @@ public:
     wxAcceleratorTable() = default;
 
     // load from .rc resource (Windows specific)
-    explicit wxAcceleratorTable(const wxString& resource);
+    explicit wxAcceleratorTable(std::string_view resource);
 
     // initialize from array
-    wxAcceleratorTable(gsl::span<wxAcceleratorEntry> entries);
+    wxAcceleratorTable(wx::span<wxAcceleratorEntry> entries);
 
     bool Ok() const { return IsOk(); }
     bool IsOk() const;
